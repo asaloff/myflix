@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
   has_many :videos, -> { order("title")}
 
-  validates :title, uniqueness: true
+  validates_uniqueness_of :title
 end
