@@ -4,7 +4,7 @@ describe Category do
   it { should have_many :videos }
   it { should validate_uniqueness_of :title }
 
-  describe "recent_videos" do
+  describe "#recent_videos" do
     it "returns an empty array if the there are no videos in the category" do
       comedy = Category.create(title: "Comedy")
       expect(comedy.recent_videos).to eq([])

@@ -6,6 +6,6 @@ class Video < ActiveRecord::Base
 
   def self.search_by_title(search_input)
     return [] if search_input == ''
-    where("lower(title) LIKE ?", "%#{search_input.downcase}%").sort_by { |vid| vid.created_at }
+    where("title ILIKE ?", "%#{search_input}%").order("created_at")
   end
 end

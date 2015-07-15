@@ -4,6 +4,6 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :title
 
   def recent_videos
-    videos.first(6)
+    videos.limit(6)
   end
 end

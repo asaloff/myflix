@@ -2,4 +2,4 @@
   - @videos.each do |video|
     .video.pull-left
       = link_to video, nil do
-        %img{src: video.small_cover_url}
+        = image_tag video.small_cover_url
