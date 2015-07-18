@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(full_name: 'Aaron Saloff', email: 'aaronsaloff@gmail.com', password: 'password')
+User.create(full_name: 'Aaron Saloff', email: 'aaronsaloff@example.com', password: 'password')
 Category.create(title: "Comedy")
 Category.create(title: "Cartoons")
 Video.create(title: "Monk", description: "After the unsolved murder of his wife, Adrian Monk develops obsessive-compulsive disorder, which includes his terror of germs and contamination. His condition costs him his job as a prominent homicide detective in the San Francisco Police Department, but he continues to solve crimes with the help of his assistant and his former boss.", small_cover_url: "/tmp/monk.jpg", large_cover_url: "/tmp/monk_large.jpg", category_id: 1)
