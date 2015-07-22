@@ -8,7 +8,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
-    @reviews = @video.reviews
+    @reviews = @video.reviews.order('created_at DESC')
   end
 
   def search
