@@ -9,4 +9,8 @@ class Video < ActiveRecord::Base
     return [] if search_input == ''
     where("title ILIKE ?", "%#{search_input}%").order("created_at")
   end
+
+  def average_rating
+    self.reviews.average(:rating).round(1).to_s + ' / 5.0'
+  end
 end
