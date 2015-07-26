@@ -73,4 +73,36 @@ describe QueueItemsController do
       expect(response).to redirect_to login_path
     end
   end
+
+  describe 'DELETE destroy' do
+    let(:sarah) { Fabricate(:user) }
+    let(:video) { Fabricate(:video) }
+    let(:queue_item) { Fabricate(:queue_item, video: video, user: sarah) }
+
+    before do
+      session[:user_id] = sarah.id
+    end
+
+    it 'redirects to the my queue page' do
+      delete :destroy, id: queue_item.id
+      expect(response).to redirect_to my_queue_path
+    end
+
+    it 'destroys the queue item' do
+      delete :destroy, id: queue_item.id
+      expect(sarah.queue_items.count).to eq(0)
+    end
+
+    it "does not delete the queue item if it is not in current users queue" do
+      fred = Fabricate(:user)
+      queue_item = Fabricate(:queue_item, video: video, user: fred)
+      delete :destroy, id: queue_item.id
+      expect(fred.queue_items.count).to eq(1)
+    end
+     it "redirects to the sign in page for unauthenticated users" do
+      session[:user_id] = nil
+      delete :destroy, id: queue_item.id
+      expect(response).to redirect_to login_path
+     end
+  end
 end

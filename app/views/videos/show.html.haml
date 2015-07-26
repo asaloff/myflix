@@ -6,8 +6,9 @@
       .video_info.col-sm-3
         %header
           %h3= @video.title
-          %br
-          %p Average Rating: #{@video.average_rating}
+          - if @video.reviews.any?
+            %br
+            %p Average Rating: #{@video.average_rating}
           %hr
           %p= @video.description
           .actions
