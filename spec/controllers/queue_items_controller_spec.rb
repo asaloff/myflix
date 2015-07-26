@@ -5,10 +5,8 @@ describe QueueItemsController do
     it "sets @queue_items to the signed in user's queue_items" do
       sarah = Fabricate(:user)
       session[:user_id] = sarah.id
-      video = Fabricate(:video)
-      video2 = Fabricate(:video)
-      queue_item1 = Fabricate(:queue_item, user: sarah, video: video)
-      queue_item2 = Fabricate(:queue_item, user: sarah, video: video2)
+      queue_item1 = Fabricate(:queue_item, user: sarah, video: Fabricate(:video))
+      queue_item2 = Fabricate(:queue_item, user: sarah, video: Fabricate(:video))
       get :index
       expect(assigns(:queue_items)).to match_array([queue_item1, queue_item2])
     end
@@ -38,7 +36,7 @@ describe QueueItemsController do
       session[:user_id] = Fabricate(:user).id
       video = Fabricate(:video)
       post :create, video_id: video.id
-      expect(assigns(:queue_item).video).to eq(video)
+      expect(QueueItem.last.video).to eq(video)
     end
 
     it "creates a new queue item associated with the logged in user" do
@@ -46,7 +44,7 @@ describe QueueItemsController do
       session[:user_id] = sarah.id
       video = Fabricate(:video)
       post :create, video_id: video.id
-      expect(assigns(:queue_item).user).to eq(sarah)
+      expect(QueueItem.last.user).to eq(sarah)
     end
 
     it "it puts the queue item as the last position in the queue" do
@@ -56,7 +54,7 @@ describe QueueItemsController do
       video2 = Fabricate(:video)
       Fabricate(:queue_item, user: sarah, video: video2)
       post :create, video_id: video.id
-      expect(assigns(:queue_item).position).to eq(2)
+      expect(QueueItem.last.position).to eq(2)
     end
 
     it "does not add the queue item if it is already in the queue" do
@@ -99,10 +97,11 @@ describe QueueItemsController do
       delete :destroy, id: queue_item.id
       expect(fred.queue_items.count).to eq(1)
     end
-     it "redirects to the sign in page for unauthenticated users" do
+
+    it "redirects to the sign in page for unauthenticated users" do
       session[:user_id] = nil
       delete :destroy, id: queue_item.id
       expect(response).to redirect_to login_path
-     end
+    end
   end
 end

@@ -8,7 +8,7 @@ class QueueItem < ActiveRecord::Base
   delegate :title, to: :video, prefix: :video
 
   def rating
-    review = video.reviews.where(user: user).first
+    review = video.reviews.find_by(user: user)
     review.rating if review
   end
 
