@@ -91,6 +91,12 @@ describe QueueItemsController do
       expect(sarah.queue_items.count).to eq(0)
     end
 
+    it "normalizes the position of the remaining queue items" do
+      queue_item2 = Fabricate(:queue_item, user: sarah, video: video, position: 2)
+      delete :destroy, id: queue_item.id
+      expect(queue_item2.reload.position).to eq(1)
+    end
+
     it "does not delete the queue item if it is not in current users queue" do
       fred = Fabricate(:user)
       queue_item = Fabricate(:queue_item, video: video, user: fred)
@@ -145,7 +151,7 @@ describe QueueItemsController do
 
       it "sets the flash method" do
         post :update_queue, queue_items: [{id: queue_item1.id, position: 3.1}, {id: queue_item2.id, position: 1}]
-        expect(flash["error"]).not_to be_nil
+        expect(flash["danger"]).not_to be_nil
       end
 
       it "does not update the queue" do
@@ -163,7 +169,8 @@ describe QueueItemsController do
 
     context "with queue items that do not belong to the current user" do
       let(:sarah) { Fabricate(:user) }
-      let(:queue_item1) { Fabricate(:queue_item, user: sarah, video: Fabricate(:video), position: 1) }
+      let(:fred) { Fabricate(:user) }
+      let(:queue_item1) { Fabricate(:queue_item, user: fred, video: Fabricate(:video), position: 1) }
       let(:queue_item2) { Fabricate(:queue_item, user: sarah, video: Fabricate(:video), position: 2) }
 
       before do
@@ -171,10 +178,14 @@ describe QueueItemsController do
       end
       
       it "redirects to the my queue path" do
-
+        post :update_queue, queue_items: [{id: queue_item1.id, position: 3}, {id: queue_item2.id, position: 2}]
+        expect(response).to redirect_to my_queue_path
       end
 
-      it "does not save the queue items"
+      it "does not save the queue items" do
+        post :update_queue, queue_items: [{id: queue_item1.id, position: 3}, {id: queue_item2.id, position: 2}]
+        expect(queue_item1.reload.position).to eq(1)
+      end
     end
   end
 end
