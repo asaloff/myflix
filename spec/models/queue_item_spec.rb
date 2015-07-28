@@ -3,6 +3,7 @@ require 'spec_helper'
 describe QueueItem do
   it { should validate_presence_of :user }
   it { should validate_presence_of :video }
+  it { should validate_numericality_of(:position).only_integer }
   it { should delegate_method(:category).to(:video) }
   it { should delegate_method(:title).to(:video).with_prefix(:video) }
 
