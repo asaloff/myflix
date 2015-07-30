@@ -24,7 +24,7 @@
               = f.select :rating, options_for_num_of_stars, label: "Rate this video"
           .row
             .col-sm-8
-              = f.text_area :content, label: "Write Review", placeholder: "Leave a comment...", class: "form-control span6", rows: 6
+              = f.text_area :content, label: "Write Review", placeholder: "Leave a comment...", class: "form-control col-sm-6-offset-1", rows: 6
         %fieldset.form-group.actions.clearfix
           = f.submit "Submit", class: "btn btn-default"
           = link_to "Cancel", @video

@@ -151,7 +151,7 @@ describe QueueItemsController do
 
       it "sets the flash method" do
         post :update_queue, queue_items: [{id: queue_item1.id, position: 3.1}, {id: queue_item2.id, position: 1}]
-        expect(flash["danger"]).not_to be_nil
+        expect(flash["danger"]).to be_present
       end
 
       it "does not update the queue" do
