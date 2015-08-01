@@ -41,7 +41,6 @@ describe User do
     end
 
     it "returns false if the video is not in the user's queue" do
-      queue_item = Fabricate(:queue_item, user: Fabricate(:user), video: video)
       expect(sarah.already_queued?(video)).to be false
     end
   end

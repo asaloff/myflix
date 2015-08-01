@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SessionsController do
   describe 'GET new' do
     it 'redirects to the home page for authenticated users' do
-      session[:user_id] = Fabricate(:user).id
+      set_current_user
       get :new
       expect(response).to redirect_to home_path
     end
@@ -25,12 +25,13 @@ describe SessionsController do
 
     context 'without valid credentials' do
       before { post :create }
+
       it 'does not put the signed in user in the session' do
         expect(session[:user_id]).to be_nil
       end
 
-      it 'redirects to he sign in page' do
-        expect(response).to redirect_to login_path
+      it_behaves_like "require_sign_in" do
+        let(:action) { nil }
       end
 
       it 'sets the flash message' do
@@ -41,7 +42,7 @@ describe SessionsController do
 
   describe 'GET destroy' do
     before do
-      session[:user_id] = Fabricate(:user).id
+      set_current_user
       get :destroy
     end
 

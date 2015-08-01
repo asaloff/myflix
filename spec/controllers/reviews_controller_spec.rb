@@ -2,13 +2,10 @@ require 'spec_helper'
 
 describe ReviewsController do
   describe "POST create" do
-    context "with authenticated user" do
-      let(:current_user) { Fabricate(:user) }
-      let(:video) { Fabricate(:video) }
+    let(:video) { Fabricate(:video) }
 
-      before do
-        session[:user_id] = current_user.id
-     end
+    context "with authenticated user" do
+      before { set_current_user }
 
       context "with valid inputs" do
         before do
@@ -19,8 +16,8 @@ describe ReviewsController do
           expect(response).to redirect_to video
         end
 
-        it "sets @video" do
-          expect(assigns(:video)).to eq(video)
+        it_behaves_like "sets @video" do
+          let(:action) { nil }
         end
 
         it "creates a new review" do
@@ -47,9 +44,8 @@ describe ReviewsController do
           expect(response).to render_template "videos/show"
         end
 
-        it "sets @video" do
-          post :create, review: { rating: 5 }, video_id: video.id
-          expect(assigns(:video)).to eq(video)
+        it_behaves_like "sets @video" do
+          let(:action) { post :create, review: { rating: 5 }, video_id: video.id }
         end
 
         it "sets @reviews" do
@@ -61,10 +57,8 @@ describe ReviewsController do
     end
 
     context "with unauthenticated user" do
-      it "redirects to login" do
-        video = Fabricate(:video)
-        post :create, review: Fabricate.attributes_for(:review), video_id: video.id
-        expect(response).to redirect_to login_path
+      it_behaves_like "require_sign_in" do
+        let(:action) { post :create, review: Fabricate.attributes_for(:review), video_id: video.id }
       end
     end
   end
