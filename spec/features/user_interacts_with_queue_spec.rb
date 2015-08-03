@@ -55,7 +55,7 @@ feature "User interacts with queue" do
   end
 
   def expect_hidden_link(link_text)
-    expect(page).not_to have_content(link_text)
+    expect(page).to have_no_content(link_text)
   end
 
   def set_video_postion(video, position)
