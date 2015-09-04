@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      AppMailer.send_welcome(@user).deliver
       flash['success'] = 'You have registered successfully'
       redirect_to login_path
     else
