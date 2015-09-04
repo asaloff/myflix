@@ -6,12 +6,11 @@ describe UsersController do
     before { set_current_user }
     
     it_behaves_like "require_sign_in" do
-      let(:action) { get :show, id: sarah.id }
+      let(:action) { get :show, id: sarah }
     end
 
     it 'sets @user' do
-      get :show, id: sarah.id
-      expect(assigns(:user)).to be_instance_of(User)
+      get :show, id: sarah
       expect(assigns(:user)).to eq sarah
     end
   end

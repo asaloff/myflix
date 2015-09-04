@@ -32,8 +32,8 @@ end
 
 if User.first.relationships.size == 0
   puts "Having the first user following all other users..."
-  for user in User.all
-    Fabricate(:relationship, user: User.first, following: user)
+  User.all.each do |user|
+    Fabricate(:relationship, user: User.first, following: user) if user != User.first
   end
 end
 

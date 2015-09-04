@@ -16,8 +16,6 @@ describe RelationshipsController do
       relationship2 = Fabricate(:relationship, user: sarah, following: frank)
       get :index
       expect(assigns(:relationships)).to eq sarah.relationships
-      expect(sarah.followings).to match_array([bob, frank])
-      expect(bob.followers).to eq([sarah])
     end
   end
 
@@ -38,7 +36,7 @@ describe RelationshipsController do
       it 'should redirect to the people page' do
         relationship1 = Fabricate(:relationship, user: sarah, following: bob)
         delete :destroy, id: relationship1.id
-        response.should redirect_to people_path
+        expect(response).to redirect_to people_path
       end
 
       it 'destroys the relationship if the current user is the follower' do
