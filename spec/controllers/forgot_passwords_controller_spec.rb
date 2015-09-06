@@ -32,7 +32,7 @@ describe ForgotPasswordsController do
 
       it 'sets the error message' do
         post :create, email: ''
-        expect(flash["danger"]).to eq "You must enter an email address"
+        expect(flash["danger"]).to be_present
       end
     end
 
@@ -44,7 +44,7 @@ describe ForgotPasswordsController do
 
       it 'sets the error message' do
         post :create, email: 'foo@example.com'
-        expect(flash["danger"]).to eq "The email address you entered is not in our system"
+        expect(flash["danger"]).to be_present
       end
     end
   end

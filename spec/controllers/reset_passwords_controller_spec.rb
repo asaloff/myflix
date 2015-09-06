@@ -49,7 +49,7 @@ describe ResetPasswordsController do
       it 'sets the error message' do
         sarah = Fabricate(:user, password: "old_password", password_token: "12345")
         post :update, id: sarah.password_token, user: { password: "" }
-        expect(flash["danger"]).to eq "Please input a valid password"
+        expect(flash["danger"]).to be_present
       end
     end
   end

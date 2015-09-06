@@ -6,7 +6,7 @@ class ResetPasswordsController < ApplicationController
   end
 
   def update
-    if params[:user][:password] == ""
+    if params[:user][:password].strip == ""
       flash["danger"] = "Please input a valid password"
       redirect_to reset_password_path(@user.password_token)
     else
