@@ -20,12 +20,53 @@ describe UsersController do
       get :new
       expect(assigns(:user)).to be_instance_of(User)
     end
+
+    it 'logs out any signed in user' do
+      set_current_user
+      get :new
+      expect(session[:user_id]).to be_nil
+    end
+  end
+
+  describe 'GET new_with_invitation_token' do
+    it 'logs out any signed in user' do
+      set_current_user
+      invitation = Fabricate(:invitation, inviter: Fabricate(:user))
+      get :new_with_invitation_token, token: invitation.token
+      expect(session[:user_id]).to be_nil
+    end
+
+    context 'with a valid invitation' do
+      let(:sarah) { Fabricate(:user) }
+      let(:invitation) { Fabricate(:invitation, inviter: sarah) }
+      before { get :new_with_invitation_token, token: invitation.token }
+
+      it 'renders the new template' do
+        expect(response).to render_template :new
+      end
+
+      it 'sets the @invitation variable' do
+        expect(assigns(:invitation)).to eq invitation
+      end
+
+      it 'set @user to a new user' do
+        expect(assigns(:user)).to be_instance_of(User)
+        expect(assigns(:user)).to be_new_record
+      end
+    end
+
+    context 'without a invitation' do
+      it "redirects to the expired link path" do
+        get :new_with_invitation_token, token: "12345"
+        expect(response).to redirect_to expired_link_path
+      end
+    end
   end
 
   describe 'POST create' do
     after { ActionMailer::Base.deliveries.clear }
 
-    context 'with valid user' do
+    context 'with valid inputs' do
       before { post :create, user: Fabricate.attributes_for(:user) }
 
       it 'saves the user' do
@@ -53,7 +94,33 @@ describe UsersController do
       end
     end
 
-    context 'with invalid user' do
+    context "with valid inputs and has invitation" do
+      let(:sarah) { Fabricate(:user) }
+      let(:invitation) { Fabricate(:invitation, inviter: sarah) }
+      before { post :create, user: Fabricate.attributes_for(:user), invitation_token: invitation.token }
+
+      it "sets @invitation" do
+        expect(assigns(:invitation)).to eq invitation
+      end
+
+      it "sets the new user's inviter" do
+        expect(User.last.inviter_id).to eq sarah.id
+      end
+
+      it "has the new user follow the inviter" do
+        expect(User.last.followings).to eq [sarah]
+      end
+
+      it "has the inviter follow the new user" do
+        expect(User.last.followers).to eq [sarah]
+      end
+
+      it "destroys the invitation" do
+        expect(Invitation.all.size).to eq(0)
+      end
+    end
+
+    context 'with invalid inputs' do
       before { post :create, user: Fabricate.attributes_for(:user, email: '') }
 
       it 'does not save the user' do

@@ -2,7 +2,7 @@ class ResetPasswordsController < ApplicationController
   before_action :find_user
 
   def show
-    redirect_to expired_reset_link_path if !@user
+    redirect_to expired_link_path if !@user
   end
 
   def update

@@ -3,8 +3,7 @@ require 'spec_helper'
 feature 'user resets password' do
   scenario 'user requests and changes password through email link' do
     sarah = Fabricate(:user, password: "old_password")
-    
-    clear_emails
+
     request_password_reset_email(sarah)
     open_email sarah.email
     expect_email_to_have_users_name(sarah)
@@ -17,6 +16,8 @@ feature 'user resets password' do
 
     sign_in_with_new_password(sarah)
     expect_to_be_signed_in(sarah)
+
+    clear_emails
   end
 
   def request_password_reset_email(user)
@@ -52,9 +53,5 @@ feature 'user resets password' do
 
   def expect_to_be_on_login_page
     expect(page).to have_content "Sign In"
-  end
-
-  def expect_to_be_signed_in(user)
-    expect(page).to have_content "Welcome, #{user.full_name}"
   end
 end
