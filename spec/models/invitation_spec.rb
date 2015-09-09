@@ -8,6 +8,6 @@ describe Invitation do
   it { should validate_presence_of :inviter }
 
   it_behaves_like "tokenable" do
-    let(:object) { Fabricate(:invitation, inviter: Fabricate(:user)) }
+    let(:object) { Fabricate(:invitation, inviter: Fabricate(:userr)) }
   end
 end
