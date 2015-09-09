@@ -26,5 +26,6 @@ Myflix::Application.configure do
   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
   :domain         => 'http://enigmatic-crag-3918.heroku.com',
-  :authentication => :plain,
+  :authentication => :plain
+  }
 end
