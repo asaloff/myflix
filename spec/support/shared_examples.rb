@@ -19,3 +19,9 @@ shared_examples "sets @video" do
     expect(assigns(:video)).to eq(video)
   end
 end
+
+shared_examples "tokenable" do
+  it "generates a token when the object is creates" do
+    expect(object.token).to be_present
+  end
+end
