@@ -1,0 +1,16 @@
+!!! 5
+%html(lang="en-US")
+  %body
+    %p
+      #{@invitation.invitee_name}, 
+    %p
+      You have a message from #{@invitation.inviter.full_name}:
+    %p
+      = @invitation.message
+    %p
+      To join MyFlix, 
+      %span
+        = link_to "click here", new_with_token_url(@invitation.token)
+    %br
+    %p
+      Happy viewing!

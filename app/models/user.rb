@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :followings, through: :relationships
   has_many :follower_relationships, class_name: "Relationship", foreign_key: "following_id"
   has_many :followers, through: :follower_relationships, source: :user
+  has_many :invitations
 
 
   has_secure_password validations: false

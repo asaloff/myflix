@@ -13,7 +13,7 @@ describe ResetPasswordsController do
     context 'with an invalid password token' do
       it 'redirects to the invalid token page' do
         get :show, id: "12345"
-        expect(response).to redirect_to expired_reset_link_path
+        expect(response).to redirect_to expired_link_path
       end
     end
   end

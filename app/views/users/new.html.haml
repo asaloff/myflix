@@ -4,7 +4,8 @@
       %header
         %h1 Register
       = f.alert_message "Please fix the errors below."
-      = f.email_field :email, label: "Email Address"
+      = f.email_field :email, label: "Email Address", value: @invitation ? @invitation.invitee_email : ""
       = f.password_field :password
       = f.text_field :full_name, label: 'Full Name'
+      = hidden_field_tag :invitation_token, @invitation.token if @invitation
       = f.submit 'Sign Up', class: 'col-sm-offset-2 btn btn-default'
