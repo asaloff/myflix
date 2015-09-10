@@ -18,7 +18,7 @@ describe UsersController do
   describe 'GET new' do
     it 'sets @user' do
       get :new
-      expect(assigns(:user)).to be_instance_of(User)
+      expect(assigns(:user)).to be_a_new User
     end
 
     it 'logs out any signed in user' do
@@ -50,8 +50,7 @@ describe UsersController do
       end
 
       it 'set @user to a new user' do
-        expect(assigns(:user)).to be_instance_of(User)
-        expect(assigns(:user)).to be_new_record
+        expect(assigns(:user)).to be_a_new User
       end
     end
 
