@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'fabrication'
 gem 'faker'
 gem 'figaro'
+gem 'sidekiq'
 
 group :development do
   gem 'thin'
@@ -34,6 +35,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-email'
   gem 'launchy'
+  gem 'rspec-sidekiq'
 end
 
 group :production do

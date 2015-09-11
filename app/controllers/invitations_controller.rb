@@ -9,7 +9,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.create(invitation_params)
 
     if @invitation.save
-      AppMailer.send_friend_signup(@invitation).deliver
+      AppMailer.delay.send_friend_signup(@invitation)
       flash["success"] = "Your invitation has been sent"
       redirect_to new_invitation_path
     else

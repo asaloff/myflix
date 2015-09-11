@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
     if @user.save
       handle_invitation
-      AppMailer.send_welcome(@user).deliver
+      AppMailer.delay.send_welcome(@user)
       flash['success'] = 'You have registered successfully'
       redirect_to login_path
     else
