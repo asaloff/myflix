@@ -1,4 +1,4 @@
 Fabricator(:video) do
-  title { Faker::Lorem.word }
+  title { sequence(:title) { |i| Faker::Lorem.word + " #{i}" } }
   description { Faker::Lorem.paragraph }
 end

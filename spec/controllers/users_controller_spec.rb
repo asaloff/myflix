@@ -79,7 +79,7 @@ describe UsersController do
 
         it 'sends out email to the right recipient' do
           message = ActionMailer::Base.deliveries.last
-          expect(message.to).to eq([controller.params[:user][:email]])
+          expect(message.to).to eq(controller.params[:user][:email])
         end
 
         it 'has the right contents' do
