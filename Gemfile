@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'sidekiq'
 gem 'puma'
 gem 'foreman'
+gem "sentry-raven"
 
 group :development do
   gem 'thin'
