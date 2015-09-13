@@ -4,7 +4,7 @@ class ForgotPasswordsController < ApplicationController
 
     if user
       user.update_column(:password_token, SecureRandom.urlsafe_base64)
-      AppMailer.send_password_reset(user).deliver
+      AppMailer.delay.send_password_reset(user)
       redirect_to sent_email_reset_path
     else
       flash["danger"] = params[:email].strip == '' ? "You must enter an email address" : "The email address you entered is not in our system"
