@@ -1,0 +1,19 @@
+machine:
+  ruby:
+    version: 2.1.7
+deployment:
+  production:
+    branch: master
+    commands:
+      - heroku maintenance:on --app enigmatic-crag-3918
+      - heroku pg:backups capture --app enigmatic-crag-3918
+      - git push git@heroku.com:enigmatic-crag-3918.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app enigmatic-crag-3918
+      - heroku maintenance:off --app enigmatic-crag-3918
+  staging:
+    branch: staging
+    commands:
+      - heroku maintenance:on --app staging-enigmatic-crag-3918
+      - git push git@heroku.com:staging-enigmatic-crag-3918.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app staging-enigmatic-crag-3918
+      - heroku maintenance:off --app staging-enigmatic-crag-3918

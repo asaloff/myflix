@@ -28,4 +28,6 @@ Myflix::Application.configure do
   :domain         => 'http://enigmatic-crag-3918.heroku.com',
   :authentication => :plain
   }
+
+  ENV["DATABASE_URL"] = 'postgres://ipbfpwyadsofia:HGTB26cSgbIwJYKbp_xfnT8dGf@ec2-54-197-245-93.compute-1.amazonaws.com:5432/delq2l6p630gq7'
 end
