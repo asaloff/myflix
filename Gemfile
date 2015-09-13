@@ -41,7 +41,7 @@ group :test do
   gem 'rspec-sidekiq'
 end
 
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
 end
 
