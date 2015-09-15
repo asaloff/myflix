@@ -1,6 +1,4 @@
-class VideosController < ApplicationController
-  before_action :require_user
-
+class VideosController < AuthenticationController
   def index
     @videos = Video.all
     @categories = Category.all

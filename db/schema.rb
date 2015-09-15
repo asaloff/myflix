@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908195328) do
+ActiveRecord::Schema.define(version: 20150915151110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150908195328) do
     t.string   "email"
     t.string   "password_token"
     t.integer  "inviter_id"
+    t.boolean  "admin"
   end
 
   create_table "videos", force: true do |t|

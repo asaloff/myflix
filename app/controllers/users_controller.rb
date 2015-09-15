@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < AuthenticationController
   before_action :require_user, only: [:show]
   before_action :logout, only: [:new, :new_with_invitation_token]
 
