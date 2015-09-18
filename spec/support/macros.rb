@@ -24,6 +24,10 @@ def sign_in(a_user=nil)
   click_button "Sign In"
 end
 
+def sign_out
+  click_link "Sign Out"
+end
+
 def expect_to_be_signed_in(user)
   expect(page).to have_content "Welcome, #{user.full_name}"
 end
