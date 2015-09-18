@@ -1,4 +1,4 @@
-class SessionsController < AuthenticationController
+class SessionsController < ApplicationController
   before_action :require_user, only: [:destroy]
   
   def new
