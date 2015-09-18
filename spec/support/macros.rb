@@ -3,6 +3,11 @@ def set_current_user
   session[:user_id] = user.id
 end
 
+def set_current_admin_user
+  user = Fabricate(:user, admin: true)
+  session[:user_id] = user.id
+end
+
 def current_user
   User.find session[:user_id]
 end
@@ -17,6 +22,10 @@ def sign_in(a_user=nil)
   fill_in "Email Address", with: user.email
   fill_in "Password", with: user.password
   click_button "Sign In"
+end
+
+def sign_out
+  click_link "Sign Out"
 end
 
 def expect_to_be_signed_in(user)

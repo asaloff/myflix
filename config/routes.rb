@@ -18,6 +18,10 @@ Myflix::Application.routes.draw do
 
   resources :reset_passwords, only: [:show, :update]
 
+  namespace :admin do
+    resources :videos, only: [:new, :create]
+  end
+
   get '/expired_link', to: 'pages#invalid_token'
 
   get '/my_queue', to: 'queue_items#index'
