@@ -19,7 +19,7 @@ Myflix::Application.routes.draw do
   resources :reset_passwords, only: [:show, :update]
 
   namespace :admin do
-    resources :videos, only: [:new]
+    resources :videos, only: [:new, :create]
   end
 
   get '/expired_link', to: 'pages#invalid_token'
