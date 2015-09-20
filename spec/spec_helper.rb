@@ -7,6 +7,7 @@ require 'capybara/email/rspec'
 require 'sidekiq/testing'
 require 'stripe_mock'
 
+ARGV = [] # Reset ARGV so Dante will quit using rspec params
 StripeMock.spawn_server
 
 Sidekiq::Testing.inline!
