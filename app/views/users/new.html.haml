@@ -23,9 +23,6 @@
           = label_tag :security_code, "Security Code", class: "control-label col-sm-2"
           .col-sm-4
             = text_field_tag :security_code, nil, class: "form-control", data: {stripe: "cvc"}, name: nil
-          / %label.control-label.col-sm-2 Security Code
-          / .col-sm-4
-          /   %input.form-control{type: "text", data: {stripe: "cvc"} }
         .form-group
           %label.control-label.col-sm-2 Expiration
           .col-sm-3
