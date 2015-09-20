@@ -5,6 +5,10 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/email/rspec'
 require 'sidekiq/testing'
+require 'stripe_mock'
+
+ARGV = [] # Reset ARGV so Dante will quit using rspec params
+StripeMock.spawn_server
 
 Sidekiq::Testing.inline!
 
@@ -48,7 +52,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -63,6 +66,9 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/v/3-0/docs
   config.infer_spec_type_from_file_location!
+  config.color = true
+  config.tty = true
+  config.formatter = :progress
 end
 
 # Turn off warning for sidekiq not processing jobs during tests

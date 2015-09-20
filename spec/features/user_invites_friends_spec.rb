@@ -3,6 +3,7 @@ require 'spec_helper'
 feature "User invites a friend" do
   scenario "the friend can sign up" do
     sarah = Fabricate(:user)
+    StripeMock.start_client
 
     sign_in(sarah)
     expect_to_be_signed_in(sarah)
@@ -22,6 +23,8 @@ feature "User invites a friend" do
 
     sign_in_as_inviter(sarah)
     expect_inviter_to_follow_new_user
+
+    StripeMock.stop_client
   end
 
   def navigate_to_invite_page
@@ -50,6 +53,10 @@ feature "User invites a friend" do
   def sign_up
     fill_in "Password", with: "password"
     fill_in "Full Name", with: "Bob Saget"
+    fill_in "Credit Card Number", with: "4242424242424242"
+    fill_in "Security Code", with: "123"
+    find('#date_month').find(:xpath, 'option[12]').select_option
+    find('#date_year').find(:xpath, 'option[5]').select_option
     click_button "Sign Up"
     expect(page).to have_content "You have registered successfully"
   end
