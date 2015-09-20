@@ -67,7 +67,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.color = true
   config.tty = true
-  config.formatter = :documentation
+  config.formatter = :progress
 end
 
 # Turn off warning for sidekiq not processing jobs during tests
