@@ -63,10 +63,17 @@ describe UsersController do
   end
 
   describe 'POST create' do
-    after { ActionMailer::Base.deliveries.clear }
+    let(:stripe_helper) { StripeMock.create_test_helper }
+
+    before { StripeMock.start }
+
+    after do
+      ActionMailer::Base.deliveries.clear 
+      StripeMock.stop
+    end
 
     context 'with valid inputs' do
-      before { post :create, user: Fabricate.attributes_for(:user) }
+      before { post :create, user: Fabricate.attributes_for(:user), stripeToken: stripe_helper.generate_card_token }
 
       it 'saves the user' do
         expect(User.count).to eq(1)
@@ -96,7 +103,7 @@ describe UsersController do
     context "with valid inputs and has invitation" do
       let(:sarah) { Fabricate(:user) }
       let(:invitation) { Fabricate(:invitation, inviter: sarah) }
-      before { post :create, user: Fabricate.attributes_for(:user), invitation_token: invitation.token }
+      before { post :create, user: Fabricate.attributes_for(:user), invitation_token: invitation.token, stripeToken: stripe_helper.generate_card_token }
 
       it "sets @invitation" do
         expect(assigns(:invitation)).to eq invitation
@@ -120,7 +127,7 @@ describe UsersController do
     end
 
     context 'with invalid inputs' do
-      before { post :create, user: Fabricate.attributes_for(:user, email: '') }
+      before { post :create, user: Fabricate.attributes_for(:user, email: ''), stripeToken: stripe_helper.generate_card_token }
 
       it 'does not save the user' do
         expect(User.all).to be_empty

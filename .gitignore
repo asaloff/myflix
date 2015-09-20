@@ -13,9 +13,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+stripe-mock-server.log
 
 # Ignore Database configuration
 config/database.yml
 
 # Ignore application configuration
 /config/application.yml
+
+
