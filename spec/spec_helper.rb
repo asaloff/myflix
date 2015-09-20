@@ -5,6 +5,9 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/email/rspec'
 require 'sidekiq/testing'
+require 'stripe_mock'
+
+StripeMock.spawn_server
 
 Sidekiq::Testing.inline!
 

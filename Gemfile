@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.1.7'
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'sass-rails', '>= 3.2'
 gem 'coffee-rails'
 gem 'rails', '4.1.1'
 gem 'haml-rails'
-gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'pg'
@@ -21,6 +21,7 @@ gem 'sentry-raven'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-aws'
+gem 'stripe'
 
 group :development do
   gem 'thin'
@@ -42,6 +43,7 @@ group :test do
   gem 'capybara-email'
   gem 'launchy'
   gem 'rspec-sidekiq'
+  gem 'stripe-ruby-mock', '~> 2.1.1', :require => 'stripe_mock'
 end
 
 group :production, :staging do
