@@ -6,9 +6,7 @@ require 'capybara/rails'
 require 'capybara/email/rspec'
 require 'sidekiq/testing'
 require 'stripe_mock'
-
-ARGV = [] # Reset ARGV so Dante will quit using rspec params
-StripeMock.spawn_server
+require 'vcr'
 
 Sidekiq::Testing.inline!
 
@@ -74,4 +72,9 @@ end
 # Turn off warning for sidekiq not processing jobs during tests
 RSpec::Sidekiq.configure do |config|
   config.warn_when_jobs_not_processed_by_sidekiq = false
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'vcr_cassettes'
+  c.hook_into :webmock
 end

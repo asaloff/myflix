@@ -44,6 +44,8 @@ group :test do
   gem 'launchy'
   gem 'rspec-sidekiq'
   gem 'stripe-ruby-mock', '~> 2.1.1', :require => 'stripe_mock'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production, :staging do
