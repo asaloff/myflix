@@ -43,9 +43,9 @@ group :test do
   gem 'capybara-email'
   gem 'launchy'
   gem 'rspec-sidekiq'
-  gem 'stripe-ruby-mock', '~> 2.1.1', :require => 'stripe_mock'
   gem 'vcr'
   gem 'webmock'
+  gem 'stripe-ruby-mock', '~> 2.1.1', :require => 'stripe_mock'
 end
 
 group :production, :staging do

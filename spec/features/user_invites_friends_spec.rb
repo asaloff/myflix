@@ -2,8 +2,10 @@ require 'spec_helper'
 
 feature "User invites a friend" do
   scenario "the friend can sign up" do
+    StripeMock.start_client
+
     sarah = Fabricate(:user)
-    
+
     sign_in(sarah)
     expect_to_be_signed_in(sarah)
 
@@ -15,15 +17,15 @@ feature "User invites a friend" do
     current_email.click_link 'click here'
     expect_register_page_with_populated_email
 
-    VCR.use_cassette "register" do
-      sign_up
-    end
-    
+    sign_up
+
     sign_in_new_user
     expect_new_user_to_follow_inviter(sarah)
 
     sign_in_as_inviter(sarah)
     expect_inviter_to_follow_new_user
+
+    StripeMock.stop_client
   end
 
   def navigate_to_invite_page

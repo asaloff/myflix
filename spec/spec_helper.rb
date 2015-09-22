@@ -5,11 +5,14 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/email/rspec'
 require 'sidekiq/testing'
-require 'stripe_mock'
 require 'vcr'
+require 'stripe_mock'
+
+ARGV.clear
+StripeMock.spawn_server
 
 Sidekiq::Testing.inline!
-
+Capybara.server_port = 52662
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -77,4 +80,5 @@ end
 VCR.configure do |c|
   c.cassette_library_dir = 'vcr_cassettes'
   c.hook_into :webmock
+  c.ignore_localhost = true
 end
