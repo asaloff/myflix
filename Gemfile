@@ -37,7 +37,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner', '1.2.0'
+  gem 'database_cleaner', '1.4.1'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'capybara-email'
@@ -46,6 +46,8 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'stripe-ruby-mock', '~> 2.1.1', :require => 'stripe_mock'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
 end
 
 group :production, :staging do
