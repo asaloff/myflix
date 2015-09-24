@@ -26,11 +26,7 @@ class UsersController < ApplicationController
     @invitation = Invitation.find_by token: params[:invitation_token]
 
     if @user.valid?
-      charge = StripeWrapper::Charge.create(
-        :amount => 999,
-        :source => params[:stripeToken],
-        :description => "Sign up charge for #{@user.email}"
-      )
+      charge = handle_registration_charge
       if charge.successful?
         @user.save
         handle_invitation
@@ -38,7 +34,7 @@ class UsersController < ApplicationController
         flash['success'] = 'You have registered successfully'
         redirect_to login_path
       else
-        flash["danger"] = charge.error_message
+        flash.now["danger"] = charge.error_message
         render 'new'
       end
     else
@@ -62,8 +58,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def handle_charge
-
+  def handle_registration_charge
+    StripeWrapper::Charge.create(
+      :amount => 999,
+      :source => params[:stripeToken],
+      :description => "Sign up charge for #{@user.email}"
+    )
   end
 
   def send_welcome_email
