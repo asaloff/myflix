@@ -35,7 +35,7 @@ describe SessionsController do
       end
 
       it 'sets the flash message' do
-        expect(flash[:danger]).not_to be_blank
+        expect(flash[:danger]).to be_present
       end
     end
   end
