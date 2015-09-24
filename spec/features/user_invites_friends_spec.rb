@@ -2,8 +2,9 @@ require 'spec_helper'
 
 feature "User invites a friend" do
   scenario "the friend can sign up" do
-    sarah = Fabricate(:user)
     StripeMock.start_client
+
+    sarah = Fabricate(:user)
 
     sign_in(sarah)
     expect_to_be_signed_in(sarah)

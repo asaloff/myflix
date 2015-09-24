@@ -5,13 +5,16 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/email/rspec'
 require 'sidekiq/testing'
+require 'vcr'
 require 'stripe_mock'
+require 'capybara/poltergeist'
 
-ARGV = [] # Reset ARGV so Dante will quit using rspec params
+ARGV.clear
 StripeMock.spawn_server
 
-Sidekiq::Testing.inline!
+Capybara.javascript_driver = :poltergeist
 
+Sidekiq::Testing.inline!
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -40,7 +43,22 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+
+
+  config.use_transactional_fixtures = false
+
+  config.before :each do
+    if Capybara.current_driver == :rack_test
+      DatabaseCleaner.strategy = :transaction
+    else
+      DatabaseCleaner.strategy = :truncation
+    end
+    DatabaseCleaner.start
+  end
+
+  config.after do
+    DatabaseCleaner.clean
+  end
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -74,4 +92,13 @@ end
 # Turn off warning for sidekiq not processing jobs during tests
 RSpec::Sidekiq.configure do |config|
   config.warn_when_jobs_not_processed_by_sidekiq = false
+end
+
+VCR.configure do |c|
+  c.default_cassette_options = { :record => :new_episodes }
+  c.allow_http_connections_when_no_cassette = true
+  c.cassette_library_dir = 'vcr_cassettes'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.ignore_localhost = true
 end
