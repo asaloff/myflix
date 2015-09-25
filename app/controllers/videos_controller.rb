@@ -4,7 +4,7 @@ class VideosController < AuthenticationController
   end
 
   def show
-    @video = VideoDecorator.decorate(Video.find(params[:id]))
+    @video = Video.find(params[:id]).decorate
     @reviews = @video.reviews
   end
 
