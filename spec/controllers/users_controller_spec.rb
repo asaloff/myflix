@@ -63,36 +63,12 @@ describe UsersController do
   end
 
   describe 'POST create' do
-    after do
-      ActionMailer::Base.deliveries.clear 
-    end
-
-    context 'with valid personal info and valid card' do
-      let(:charge) { double(:charge, successful?: true) }
+    context 'with successful signup' do
+      let(:result) { double(:result, successful?: true) }
 
       before do
-        allow(StripeWrapper::Charge).to receive(:create).and_return(charge)
+        allow_any_instance_of(UserSignup).to receive(:sign_up).and_return(result)
         post :create, user: Fabricate.attributes_for(:user)
-      end
-
-      it 'saves the user' do
-        expect(User.count).to eq(1)
-      end
-
-      context 'email sending' do
-        it 'sends the email' do
-          expect(ActionMailer::Base.deliveries).not_to be_empty
-        end
-
-        it 'sends out email to the right recipient' do
-          message = ActionMailer::Base.deliveries.last
-          expect(message.to).to include(controller.params[:user][:email])
-        end
-
-        it 'has the right contents' do
-          message = ActionMailer::Base.deliveries.last
-          expect(message.body).to include(controller.params[:user][:full_name])
-        end
       end
 
       it 'redirects to sign in' do
@@ -103,52 +79,25 @@ describe UsersController do
     context "with valid personal info, valid card, and has invitation" do
       let(:sarah) { Fabricate(:user) }
       let(:invitation) { Fabricate(:invitation, inviter: sarah) }
-      let(:charge) { double(:charge, successful?: true) }
-
-      before do
-        allow(StripeWrapper::Charge).to receive(:create).and_return(charge)
-        post :create, user: Fabricate.attributes_for(:user), invitation_token: invitation.token
-      end
+      let(:result) { double(:result, successful?: true) }
 
       it "sets @invitation" do
+        allow_any_instance_of(UserSignup).to receive(:sign_up).and_return(result)
+        post :create, user: Fabricate.attributes_for(:user), invitation_token: invitation.token
         expect(assigns(:invitation)).to eq invitation
-      end
-
-      it "sets the new user's inviter" do
-        expect(User.last.inviter_id).to eq sarah.id
-      end
-
-      it "has the new user follow the inviter" do
-        expect(User.last.followings).to eq [sarah]
-      end
-
-      it "has the inviter follow the new user" do
-        expect(User.last.followers).to eq [sarah]
-      end
-
-      it "destroys the invitation" do
-        expect(Invitation.all.size).to eq(0)
       end
     end
 
     context "with valid personal info and declined card" do
-      let(:charge) { double(:charge, successful?: false, error_message: "Your card was declined.") }
+      let(:result) { double(:result, successful?: false, error_message: "Card declined") }
 
       before do
-        allow(StripeWrapper::Charge).to receive(:create).and_return(charge)
+        allow_any_instance_of(UserSignup).to receive(:sign_up).and_return(result)
         post :create, user: Fabricate.attributes_for(:user)
       end
 
       it "renders the new template" do
         expect(response).to render_template :new
-      end
-
-      it "does not save the user" do
-        expect(User.all).to be_empty
-      end
-
-      it "does not send the welcome email" do
-        expect(ActionMailer::Base.deliveries).to be_empty
       end
 
       it "sets @user" do
@@ -165,24 +114,12 @@ describe UsersController do
         post :create, user: Fabricate.attributes_for(:user, email: '')
       end
 
-      it 'does not save the user' do
-        expect(User.all).to be_empty
-      end
-
-      it 'does not send out the email' do
-        expect(ActionMailer::Base.deliveries).to be_empty
-      end
-
       it 'renders the :new template' do
         expect(response).to render_template(:new)
       end
 
       it 'sets @user' do
         expect(assigns(:user)).to be_a_new(User)
-      end
-
-      it "does not charge the card" do
-        expect(StripeWrapper::Charge).not_to receive(:create)
       end
     end
   end
