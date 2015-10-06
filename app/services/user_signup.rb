@@ -15,16 +15,14 @@ class UserSignup
         handle_invitation
         send_welcome_email
         @status = :success
-        self
       else
         @status = :failed
         @error_message = charge.error_message
-        self
       end
     else
       @status = :failed
-      self
     end
+    self
   end
 
   def successful?

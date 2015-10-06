@@ -10,12 +10,14 @@ describe UserSignup do
       let(:charge) { double(:charge, successful?: true) }
 
       before do
+        user = Fabricate.build(:user, email: 'user@example.com', full_name: 'Sarah Doe')
+        invitation = Fabricate(:invitation, inviter: Fabricate(:user))
         allow(StripeWrapper::Charge).to receive(:create).and_return(charge)
-        UserSignup.new(Fabricate.build(:user, email: 'user@example.com', full_name: 'Sarah Doe'), Fabricate(:invitation, inviter: Fabricate(:user))).sign_up('fake_stripe_token')
+        UserSignup.new(user, invitation).sign_up('fake_stripe_token')
       end
 
       it 'saves the user' do
-        expect(User.count).to eq(2)
+        expect(User.count).to eq(2) # inviter and new user
       end
 
       context 'email sending' do
@@ -66,12 +68,14 @@ describe UserSignup do
       let(:charge) { double(:charge, successful?: false, error_message: "Your card was declined.") }
 
       before do
+        user = Fabricate.build(:user)
+        invitation = Fabricate(:invitation, inviter: Fabricate(:user))
         allow(StripeWrapper::Charge).to receive(:create).and_return(charge)
-        UserSignup.new(Fabricate.build(:user), Fabricate(:invitation, inviter: Fabricate(:user))).sign_up('fake_stripe_token')
+        UserSignup.new(user, invitation).sign_up('fake_stripe_token')
       end
 
       it "does not save the user" do
-        expect(User.all.size).to eq(1)
+        expect(User.all.size).to eq(1) # only inviter
       end
 
       it "does not send the welcome email" do
@@ -81,11 +85,13 @@ describe UserSignup do
 
     context 'with invalid personal info' do
       before do
-        UserSignup.new(User.new(email: 'sarah@example.com'), Fabricate(:invitation, inviter: Fabricate(:user))).sign_up('fake_stripe_token')
+        invalid_user = User.new(email: 'sarah@example.com')
+        invitation = Fabricate(:invitation, inviter: Fabricate(:user))
+        UserSignup.new(invalid_user, invitation).sign_up('fake_stripe_token')
       end
 
       it 'does not save the user' do
-        expect(User.all.size).to eq(1)
+        expect(User.all.size).to eq(1) # only inviter
       end
 
       it 'does not send out the email' do
