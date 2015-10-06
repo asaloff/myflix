@@ -63,9 +63,7 @@ describe UsersController do
   end
 
   describe 'POST create' do
-    after do
-      ActionMailer::Base.deliveries.clear 
-    end
+    after { ActionMailer::Base.deliveries.clear }
 
     context 'with successful signup' do
       let(:result) { double(:result, successful?: true) }

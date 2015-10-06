@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 06 Oct 2015 16:04:45 GMT
+      - Tue, 06 Oct 2015 16:20:48 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_77CK1IjHHHAqUa
+      - req_77CaFIIarli8HI
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,14 +58,14 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16sxvlGDaDyff11ekFBIDKzO",
+          "id": "tok_16syBIGDaDyff11eiCXIjhxW",
           "livemode": false,
-          "created": 1444147485,
+          "created": 1444148448,
           "used": false,
           "object": "token",
           "type": "card",
           "card": {
-            "id": "card_16sxvlGDaDyff11e4rFJlR8J",
+            "id": "card_16syBIGDaDyff11errR6OY1x",
             "object": "card",
             "last4": "0002",
             "brand": "Visa",
@@ -91,13 +91,13 @@ http_interactions:
           "client_ip": "107.208.148.179"
         }
     http_version: 
-  recorded_at: Tue, 06 Oct 2015 16:04:51 GMT
+  recorded_at: Tue, 06 Oct 2015 16:20:55 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=400&currency=usd&source=tok_16sxvlGDaDyff11ekFBIDKzO&description=Charge%20for%20test%40example.com
+      string: amount=400&currency=usd&source=tok_16syBIGDaDyff11eiCXIjhxW&description=Charge%20for%20test%40example.com
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -123,7 +123,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 06 Oct 2015 16:04:46 GMT
+      - Tue, 06 Oct 2015 16:20:49 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_77CKU1oO4b9BLz
+      - req_77CaqFMjtvqvBT
       Stripe-Version:
       - '2015-09-08'
     body:
@@ -152,9 +152,9 @@ http_interactions:
             "message": "Your card was declined.",
             "type": "card_error",
             "code": "card_declined",
-            "charge": "ch_16sxvmGDaDyff11eAIBndeQ2"
+            "charge": "ch_16syBJGDaDyff11eppBLWvPH"
           }
         }
     http_version: 
-  recorded_at: Tue, 06 Oct 2015 16:04:52 GMT
+  recorded_at: Tue, 06 Oct 2015 16:20:55 GMT
 recorded_with: VCR 2.9.3

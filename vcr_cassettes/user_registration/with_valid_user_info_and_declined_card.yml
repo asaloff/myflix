@@ -61,7 +61,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&source=tok_16sxvsGDaDyff11eTA0WBU3X&description=Sign%20up%20charge%20for%20saggyb%40example.com
+      string: amount=999&currency=usd&source=tok_16syBUGDaDyff11ebyr3yTBE&description=Sign%20up%20charge%20for%20saggyb%40example.com
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -87,7 +87,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 06 Oct 2015 16:04:53 GMT
+      - Tue, 06 Oct 2015 16:21:01 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -105,7 +105,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_77CKUjGEubt4dC
+      - req_77CaKFMVzCR8ht
       Stripe-Version:
       - '2015-09-08'
     body:
@@ -116,9 +116,9 @@ http_interactions:
             "message": "Your card was declined.",
             "type": "card_error",
             "code": "card_declined",
-            "charge": "ch_16sxvtGDaDyff11ez30df6y7"
+            "charge": "ch_16syBUGDaDyff11eK09BcK4O"
           }
         }
     http_version: 
-  recorded_at: Tue, 06 Oct 2015 16:04:59 GMT
+  recorded_at: Tue, 06 Oct 2015 16:21:07 GMT
 recorded_with: VCR 2.9.3

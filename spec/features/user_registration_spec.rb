@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 feature "user registration", :vcr, js: true do
+  after { ActionMailer::Base.deliveries.clear }
+  
   background do
     visit register_path
   end

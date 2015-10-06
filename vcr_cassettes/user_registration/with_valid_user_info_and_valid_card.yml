@@ -61,7 +61,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&source=tok_16sxvvGDaDyff11ebhXQesy4&description=Sign%20up%20charge%20for%20saggyb%40example.com
+      string: amount=999&currency=usd&source=tok_16syBOGDaDyff11ejJqgGHgP&description=Sign%20up%20charge%20for%20saggyb%40example.com
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -87,7 +87,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 06 Oct 2015 16:04:56 GMT
+      - Tue, 06 Oct 2015 16:20:54 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -105,7 +105,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_77CKJAqV01hr3d
+      - req_77Ca3dLlm31qB0
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -114,9 +114,9 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "ch_16sxvwGDaDyff11eoJDkSCgB",
+          "id": "ch_16syBOGDaDyff11e7b9o7785",
           "object": "charge",
-          "created": 1444147496,
+          "created": 1444148454,
           "livemode": false,
           "paid": true,
           "status": "succeeded",
@@ -124,7 +124,7 @@ http_interactions:
           "currency": "usd",
           "refunded": false,
           "source": {
-            "id": "card_16sxvvGDaDyff11eJyQwMUnJ",
+            "id": "card_16syBNGDaDyff11eY54ZR2CD",
             "object": "card",
             "last4": "4242",
             "brand": "Visa",
@@ -149,7 +149,7 @@ http_interactions:
             "customer": null
           },
           "captured": true,
-          "balance_transaction": "txn_16sxvwGDaDyff11elJihshi2",
+          "balance_transaction": "txn_16syBOGDaDyff11eDGt3MyVf",
           "failure_message": null,
           "failure_code": null,
           "amount_refunded": 0,
@@ -169,10 +169,10 @@ http_interactions:
             "object": "list",
             "total_count": 0,
             "has_more": false,
-            "url": "/v1/charges/ch_16sxvwGDaDyff11eoJDkSCgB/refunds",
+            "url": "/v1/charges/ch_16syBOGDaDyff11e7b9o7785/refunds",
             "data": []
           }
         }
     http_version: 
-  recorded_at: Tue, 06 Oct 2015 16:05:02 GMT
+  recorded_at: Tue, 06 Oct 2015 16:21:01 GMT
 recorded_with: VCR 2.9.3

@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe UserSignup do
   describe '#sign_up' do
-    after do
-      ActionMailer::Base.deliveries.clear 
-    end
+    after { ActionMailer::Base.deliveries.clear }
 
     context 'with valid personal info and valid card' do
       let(:charge) { double(:charge, successful?: true) }
