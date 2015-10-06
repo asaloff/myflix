@@ -95,7 +95,7 @@ RSpec::Sidekiq.configure do |config|
 end
 
 VCR.configure do |c|
-  c.default_cassette_options = { :record => :new_episodes }
+  c.default_cassette_options = { :record => :all }
   c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir = 'vcr_cassettes'
   c.hook_into :webmock
