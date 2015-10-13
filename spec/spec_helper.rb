@@ -6,13 +6,15 @@ require 'capybara/rails'
 require 'capybara/email/rspec'
 require 'sidekiq/testing'
 require 'vcr'
-require 'stripe_mock'
+# require 'stripe_mock'
 require 'capybara/poltergeist'
 
-ARGV.clear
-StripeMock.spawn_server
+# ARGV.clear
+# StripeMock.spawn_server
 
 Capybara.javascript_driver = :poltergeist
+Capybara.default_max_wait_time = 5
+# Capybara.javascript_driver = :selenium
 
 Sidekiq::Testing.inline!
 # Requires supporting ruby files with custom matchers and macros, etc, in

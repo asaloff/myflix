@@ -1,0 +1,299 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: US-ASCII
+      string: description=Sign%20up%20for%20saggyb%40example.com&source=tok_16vXkXGDaDyff11eTJlspO0M&email=saggyb%40example.com&plan=myflix
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.20.1
+      Authorization:
+      - Bearer sk_test_9QsfMgBBWsEc7vsPOjYACP3h
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"1.20.1","lang":"ruby","lang_version":"2.1.7 p400 (2015-08-18)","platform":"x86_64-darwin14.0","publisher":"stripe","uname":"Darwin
+        Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
+        19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
+      Content-Length:
+      - '125'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 13 Oct 2015 18:43:51 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2384'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_79rT0h2zSIkiEq
+      Stripe-Version:
+      - '2015-09-08'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "cus_79rT74Wrs9vKpK",
+          "object": "customer",
+          "account_balance": 0,
+          "created": 1444761830,
+          "currency": "usd",
+          "default_source": "card_16vXkXGDaDyff11eDB0wIHlO",
+          "delinquent": false,
+          "description": "Sign up for saggyb@example.com",
+          "discount": null,
+          "email": "saggyb@example.com",
+          "livemode": false,
+          "metadata": {},
+          "shipping": null,
+          "sources": {
+            "object": "list",
+            "data": [
+              {
+                "id": "card_16vXkXGDaDyff11eDB0wIHlO",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_79rT74Wrs9vKpK",
+                "cvc_check": "pass",
+                "dynamic_last4": null,
+                "exp_month": 12,
+                "exp_year": 2019,
+                "fingerprint": "7CzkmxOcRfxLYEh4",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": null,
+                "tokenization_method": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_79rT74Wrs9vKpK/sources"
+          },
+          "subscriptions": {
+            "object": "list",
+            "data": [
+              {
+                "id": "sub_79rTMLa2Q6bini",
+                "object": "subscription",
+                "application_fee_percent": null,
+                "cancel_at_period_end": false,
+                "canceled_at": null,
+                "current_period_end": 1447440230,
+                "current_period_start": 1444761830,
+                "customer": "cus_79rT74Wrs9vKpK",
+                "discount": null,
+                "ended_at": null,
+                "metadata": {},
+                "plan": {
+                  "id": "myflix",
+                  "object": "plan",
+                  "amount": 999,
+                  "created": 1444666649,
+                  "currency": "usd",
+                  "interval": "month",
+                  "interval_count": 1,
+                  "livemode": false,
+                  "metadata": {},
+                  "name": "myflix",
+                  "statement_descriptor": null,
+                  "trial_period_days": null
+                },
+                "quantity": 1,
+                "start": 1444761830,
+                "status": "active",
+                "tax_percent": null,
+                "trial_end": null,
+                "trial_start": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_79rT74Wrs9vKpK/subscriptions"
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 13 Oct 2015 18:43:51 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: US-ASCII
+      string: description=Sign%20up%20for%20saggyb%40example.com&source=tok_16vXlkGDaDyff11eBDeqEl67&email=saggyb%40example.com&plan=myflix
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.20.1
+      Authorization:
+      - Bearer sk_test_9QsfMgBBWsEc7vsPOjYACP3h
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"1.20.1","lang":"ruby","lang_version":"2.1.7 p400 (2015-08-18)","platform":"x86_64-darwin14.0","publisher":"stripe","uname":"Darwin
+        Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
+        19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
+      Content-Length:
+      - '125'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 13 Oct 2015 18:45:06 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2384'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_79rU3qN6lusyWM
+      Stripe-Version:
+      - '2015-09-08'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "cus_79rU1NlgxCwiAQ",
+          "object": "customer",
+          "account_balance": 0,
+          "created": 1444761905,
+          "currency": "usd",
+          "default_source": "card_16vXljGDaDyff11e2mfCe4a0",
+          "delinquent": false,
+          "description": "Sign up for saggyb@example.com",
+          "discount": null,
+          "email": "saggyb@example.com",
+          "livemode": false,
+          "metadata": {},
+          "shipping": null,
+          "sources": {
+            "object": "list",
+            "data": [
+              {
+                "id": "card_16vXljGDaDyff11e2mfCe4a0",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_79rU1NlgxCwiAQ",
+                "cvc_check": "pass",
+                "dynamic_last4": null,
+                "exp_month": 12,
+                "exp_year": 2019,
+                "fingerprint": "7CzkmxOcRfxLYEh4",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": null,
+                "tokenization_method": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_79rU1NlgxCwiAQ/sources"
+          },
+          "subscriptions": {
+            "object": "list",
+            "data": [
+              {
+                "id": "sub_79rUyZ9MdYuVkZ",
+                "object": "subscription",
+                "application_fee_percent": null,
+                "cancel_at_period_end": false,
+                "canceled_at": null,
+                "current_period_end": 1447440305,
+                "current_period_start": 1444761905,
+                "customer": "cus_79rU1NlgxCwiAQ",
+                "discount": null,
+                "ended_at": null,
+                "metadata": {},
+                "plan": {
+                  "id": "myflix",
+                  "object": "plan",
+                  "amount": 999,
+                  "created": 1444666649,
+                  "currency": "usd",
+                  "interval": "month",
+                  "interval_count": 1,
+                  "livemode": false,
+                  "metadata": {},
+                  "name": "myflix",
+                  "statement_descriptor": null,
+                  "trial_period_days": null
+                },
+                "quantity": 1,
+                "start": 1444761905,
+                "status": "active",
+                "tax_percent": null,
+                "trial_end": null,
+                "trial_start": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_79rU1NlgxCwiAQ/subscriptions"
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 13 Oct 2015 18:45:06 GMT
+recorded_with: VCR 2.9.3

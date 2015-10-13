@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 17:37:20 GMT
+      - Tue, 13 Oct 2015 19:28:04 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79qPvG1guf64be
+      - req_79sBgCWK5UaDHm
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,10 +58,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16vWiCGDaDyff11ehmb3MQGN",
+          "id": "tok_16vYRMGDaDyff11eHg0rqzhQ",
           "object": "token",
           "card": {
-            "id": "card_16vWiCGDaDyff11elvvQ4w7W",
+            "id": "card_16vYRMGDaDyff11ejPcTobdO",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -85,19 +85,19 @@ http_interactions:
             "tokenization_method": null
           },
           "client_ip": "67.100.26.114",
-          "created": 1444757840,
+          "created": 1444764484,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 17:37:20 GMT
+  recorded_at: Tue, 13 Oct 2015 19:28:04 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: description=Charge%20for%20myflix%40example.com&source=tok_16vWiCGDaDyff11ehmb3MQGN&email=eve%40ruellind.info32
+      string: description=Charge%20for%20myflix%40example.com&source=tok_16vYRMGDaDyff11eHg0rqzhQ&email=ardella%40hoppe.io72
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -114,7 +114,7 @@ http_interactions:
         Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
         19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
-      - '111'
+      - '110'
   response:
     status:
       code: 402
@@ -123,7 +123,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 17:37:21 GMT
+      - Tue, 13 Oct 2015 19:28:05 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79qPHPfjEvBtCJ
+      - req_79sBfBeOV8pfml
       Stripe-Version:
       - '2015-09-08'
     body:
@@ -156,5 +156,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 17:37:21 GMT
+  recorded_at: Tue, 13 Oct 2015 19:28:05 GMT
 recorded_with: VCR 2.9.3

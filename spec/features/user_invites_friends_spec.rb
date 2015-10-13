@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 feature "User invites a friend" do
-  scenario "the friend can sign up" do
-    StripeMock.start_client
+  scenario "the friend can sign up", :vcr, js: true do
+    # StripeMock.start_client
 
     sarah = Fabricate(:user)
 
     sign_in(sarah)
     expect_to_be_signed_in(sarah)
 
-    navigate_to_invite_page
+    visit new_invitation_path
     send_invitation
 
     expect_email_to_have_message
@@ -25,12 +25,7 @@ feature "User invites a friend" do
     sign_in_as_inviter(sarah)
     expect_inviter_to_follow_new_user
 
-    StripeMock.stop_client
-  end
-
-  def navigate_to_invite_page
-    click_link "Invite a Friend"
-    expect(page).to have_content "Invite a friend to join MyFlix!"
+    # StripeMock.stop_client
   end
 
   def send_invitation

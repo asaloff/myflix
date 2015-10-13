@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 17:37:21 GMT
+      - Tue, 13 Oct 2015 19:28:03 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79qPN1qjeWrbGc
+      - req_79sBJ2RE7eCltb
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,10 +58,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16vWiDGDaDyff11emtwAiZrq",
+          "id": "tok_16vYRLGDaDyff11eM632tGqB",
           "object": "token",
           "card": {
-            "id": "card_16vWiDGDaDyff11eGZpAlkiZ",
+            "id": "card_16vYRLGDaDyff11eQeanneiG",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -85,19 +85,19 @@ http_interactions:
             "tokenization_method": null
           },
           "client_ip": "67.100.26.114",
-          "created": 1444757841,
+          "created": 1444764483,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 17:37:21 GMT
+  recorded_at: Tue, 13 Oct 2015 19:28:03 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: description=Charge%20for%20myflix%40example.com&source=tok_16vWiDGDaDyff11emtwAiZrq&email=mac%40batzstanton.co33
+      string: description=Charge%20for%20myflix%40example.com&source=tok_16vYRLGDaDyff11eM632tGqB&email=harley%40stanton.com71
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -123,7 +123,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 17:37:22 GMT
+      - Tue, 13 Oct 2015 19:28:04 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79qPV5tX2e188m
+      - req_79sBOFBTuN0ynZ
       Stripe-Version:
       - '2015-09-08'
     body:
@@ -156,5 +156,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 17:37:22 GMT
+  recorded_at: Tue, 13 Oct 2015 19:28:04 GMT
 recorded_with: VCR 2.9.3

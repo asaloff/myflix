@@ -11,6 +11,7 @@ feature "user registration", :vcr, js: true do
     fill_in_user_info('Bob Saget')
     fill_in_card('4242424242424242')
     click_button "Sign Up"
+    expect(page).to have_css('.alert.alert-success')
     expect(page).to have_content "You have registered successfully"
   end
 
