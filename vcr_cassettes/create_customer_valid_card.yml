@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 17:37:16 GMT
+      - Tue, 13 Oct 2015 17:37:22 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79qOFEwaE2Vouq
+      - req_79qPmnlpvHUDCn
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,10 +58,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16vWi8GDaDyff11ezPRHnod4",
+          "id": "tok_16vWiEGDaDyff11ebVHDBdYZ",
           "object": "token",
           "card": {
-            "id": "card_16vWi8GDaDyff11e0t4uPn3q",
+            "id": "card_16vWiEGDaDyff11eONfBawXN",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -85,19 +85,19 @@ http_interactions:
             "tokenization_method": null
           },
           "client_ip": "67.100.26.114",
-          "created": 1444757836,
+          "created": 1444757842,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 17:37:16 GMT
+  recorded_at: Tue, 13 Oct 2015 17:37:22 GMT
 - request:
     method: post
-    uri: https://api.stripe.com/v1/charges
+    uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: amount=400&currency=usd&source=tok_16vWi8GDaDyff11ezPRHnod4&description=Charge%20for%20test%40example.com
+      string: description=Charge%20for%20myflix%40example.com&source=tok_16vWiEGDaDyff11ebVHDBdYZ&email=gay_mante%40kemmer.info34
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -114,7 +114,7 @@ http_interactions:
         Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
         19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
-      - '105'
+      - '115'
   response:
     status:
       code: 200
@@ -123,11 +123,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 17:37:17 GMT
+      - Tue, 13 Oct 2015 17:37:23 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1448'
+      - '1427'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79qOZWDhtHVWVm
+      - req_79qP56HBRjcbUI
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -150,65 +150,60 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "ch_16vWi9GDaDyff11eV6VNj8a6",
-          "object": "charge",
-          "amount": 400,
-          "amount_refunded": 0,
-          "application_fee": null,
-          "balance_transaction": "txn_16vWi9GDaDyff11eOuun3Clo",
-          "captured": true,
-          "created": 1444757837,
-          "currency": "usd",
-          "customer": null,
-          "description": "Charge for test@example.com",
-          "destination": null,
-          "dispute": null,
-          "failure_code": null,
-          "failure_message": null,
-          "fraud_details": {},
-          "invoice": null,
+          "id": "cus_79qPWpTSfIRi2W",
+          "object": "customer",
+          "account_balance": 0,
+          "created": 1444757843,
+          "currency": null,
+          "default_source": "card_16vWiEGDaDyff11eONfBawXN",
+          "delinquent": false,
+          "description": "Charge for myflix@example.com",
+          "discount": null,
+          "email": "gay_mante@kemmer.info34",
           "livemode": false,
           "metadata": {},
-          "paid": true,
-          "receipt_email": null,
-          "receipt_number": null,
-          "refunded": false,
-          "refunds": {
+          "shipping": null,
+          "sources": {
+            "object": "list",
+            "data": [
+              {
+                "id": "card_16vWiEGDaDyff11eONfBawXN",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_79qPWpTSfIRi2W",
+                "cvc_check": "pass",
+                "dynamic_last4": null,
+                "exp_month": 9,
+                "exp_year": 2019,
+                "fingerprint": "7CzkmxOcRfxLYEh4",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": null,
+                "tokenization_method": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_79qPWpTSfIRi2W/sources"
+          },
+          "subscriptions": {
             "object": "list",
             "data": [],
             "has_more": false,
             "total_count": 0,
-            "url": "/v1/charges/ch_16vWi9GDaDyff11eV6VNj8a6/refunds"
-          },
-          "shipping": null,
-          "source": {
-            "id": "card_16vWi8GDaDyff11e0t4uPn3q",
-            "object": "card",
-            "address_city": null,
-            "address_country": null,
-            "address_line1": null,
-            "address_line1_check": null,
-            "address_line2": null,
-            "address_state": null,
-            "address_zip": null,
-            "address_zip_check": null,
-            "brand": "Visa",
-            "country": "US",
-            "customer": null,
-            "cvc_check": "pass",
-            "dynamic_last4": null,
-            "exp_month": 9,
-            "exp_year": 2019,
-            "fingerprint": "7CzkmxOcRfxLYEh4",
-            "funding": "credit",
-            "last4": "4242",
-            "metadata": {},
-            "name": null,
-            "tokenization_method": null
-          },
-          "statement_descriptor": null,
-          "status": "succeeded"
+            "url": "/v1/customers/cus_79qPWpTSfIRi2W/subscriptions"
+          }
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 17:37:17 GMT
+  recorded_at: Tue, 13 Oct 2015 17:37:23 GMT
 recorded_with: VCR 2.9.3

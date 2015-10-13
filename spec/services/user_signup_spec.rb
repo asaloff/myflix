@@ -5,12 +5,12 @@ describe UserSignup do
     after { ActionMailer::Base.deliveries.clear }
 
     context 'with valid personal info and valid card' do
-      let(:charge) { double(:charge, successful?: true) }
+      let(:customer) { double(:customer, successful?: true) }
 
       before do
         user = Fabricate.build(:user, email: 'user@example.com', full_name: 'Sarah Doe')
         invitation = Fabricate(:invitation, inviter: Fabricate(:user))
-        allow(StripeWrapper::Charge).to receive(:create).and_return(charge)
+        allow(StripeWrapper::Customer).to receive(:create).and_return(customer)
         UserSignup.new(user, invitation).sign_up('fake_stripe_token')
       end
 
@@ -38,10 +38,10 @@ describe UserSignup do
     context "with valid personal info, valid card, and has invitation" do
       let(:sarah) { Fabricate(:user) }
       let(:invitation) { Fabricate(:invitation, inviter: sarah) }
-      let(:charge) { double(:charge, successful?: true) }
+      let(:customer) { double(:customer, successful?: true) }
 
       before do
-        allow(StripeWrapper::Charge).to receive(:create).and_return(charge)
+        allow(StripeWrapper::Customer).to receive(:create).and_return(customer)
         UserSignup.new(Fabricate.build(:user), invitation).sign_up('fake_stripe_token')
       end
 
@@ -63,12 +63,12 @@ describe UserSignup do
     end
 
     context "with valid personal info and declined card" do
-      let(:charge) { double(:charge, successful?: false, error_message: "Your card was declined.") }
+      let(:customer) { double(:customer, successful?: false, error_message: "Your card was declined.") }
 
       before do
         user = Fabricate.build(:user)
         invitation = Fabricate(:invitation, inviter: Fabricate(:user))
-        allow(StripeWrapper::Charge).to receive(:create).and_return(charge)
+        allow(StripeWrapper::Customer).to receive(:create).and_return(customer)
         UserSignup.new(user, invitation).sign_up('fake_stripe_token')
       end
 
@@ -97,7 +97,7 @@ describe UserSignup do
       end
 
       it "does not charge the card" do
-        expect(StripeWrapper::Charge).not_to receive(:create)
+        expect(StripeWrapper::Customer).not_to receive(:create)
       end
     end
   end
