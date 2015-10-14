@@ -6,15 +6,13 @@ require 'capybara/rails'
 require 'capybara/email/rspec'
 require 'sidekiq/testing'
 require 'vcr'
-# require 'stripe_mock'
 require 'capybara/poltergeist'
-
-# ARGV.clear
-# StripeMock.spawn_server
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_max_wait_time = 5
-# Capybara.javascript_driver = :selenium
+Capybara.app_host = "http://localhost:3000"
+Capybara.server_host = "localhost"
+Capybara.server_port = "3000"
 
 Sidekiq::Testing.inline!
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -97,7 +95,7 @@ RSpec::Sidekiq.configure do |config|
 end
 
 VCR.configure do |c|
-  c.default_cassette_options = { :record => :all }
+  c.default_cassette_options = { :record => :new_episodes }
   c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir = 'vcr_cassettes'
   c.hook_into :webmock

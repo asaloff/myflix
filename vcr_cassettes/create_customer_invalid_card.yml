@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 19:28:04 GMT
+      - Wed, 14 Oct 2015 12:18:43 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79sBgCWK5UaDHm
+      - req_7A8UEOxnULOy3D
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,10 +58,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16vYRMGDaDyff11eHg0rqzhQ",
+          "id": "tok_16voDPGDaDyff11eEDpkg4o2",
           "object": "token",
           "card": {
-            "id": "card_16vYRMGDaDyff11ejPcTobdO",
+            "id": "card_16voDPGDaDyff11efaOpRpwR",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -85,19 +85,19 @@ http_interactions:
             "tokenization_method": null
           },
           "client_ip": "67.100.26.114",
-          "created": 1444764484,
+          "created": 1444825123,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 19:28:04 GMT
+  recorded_at: Wed, 14 Oct 2015 12:18:43 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: description=Charge%20for%20myflix%40example.com&source=tok_16vYRMGDaDyff11eHg0rqzhQ&email=ardella%40hoppe.io72
+      string: description=Charge%20for%20myflix%40example.com&source=tok_16voDPGDaDyff11eEDpkg4o2&email=danyka_borer%40bergstrombarton.net142
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -114,7 +114,7 @@ http_interactions:
         Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
         19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
-      - '110'
+      - '127'
   response:
     status:
       code: 402
@@ -123,7 +123,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 19:28:05 GMT
+      - Wed, 14 Oct 2015 12:18:44 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79sBfBeOV8pfml
+      - req_7A8USOS2IzHhHk
       Stripe-Version:
       - '2015-09-08'
     body:
@@ -156,5 +156,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 19:28:05 GMT
+  recorded_at: Wed, 14 Oct 2015 12:18:44 GMT
 recorded_with: VCR 2.9.3

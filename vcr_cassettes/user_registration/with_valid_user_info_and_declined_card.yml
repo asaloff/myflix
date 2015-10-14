@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: description=Sign%20up%20for%20saggyb%40example.com&source=tok_16vYRAGDaDyff11efRb6ot6H&email=saggyb%40example.com&plan=myflix
+      string: description=Sign%20up%20for%20saggyb%40example.com&source=tok_16voDHGDaDyff11ebA1v1IH9&email=saggyb%40example.com&plan=myflix
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 19:27:53 GMT
+      - Wed, 14 Oct 2015 12:18:36 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79sB0EciV0jHDY
+      - req_7A8U9KO1H6EZF0
       Stripe-Version:
       - '2015-09-08'
     body:
@@ -64,5 +64,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 19:27:54 GMT
+  recorded_at: Wed, 14 Oct 2015 12:18:36 GMT
 recorded_with: VCR 2.9.3

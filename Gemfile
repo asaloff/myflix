@@ -46,7 +46,6 @@ group :test do
   gem 'rspec-sidekiq'
   gem 'vcr'
   gem 'webmock'
-  gem 'stripe-ruby-mock', '~> 2.1.1', :require => 'stripe_mock'
   gem 'poltergeist'
   gem 'selenium-webdriver'
 end

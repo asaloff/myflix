@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: description=Sign%20up%20for%20saggyb%40example.com&source=tok_16vXhVGDaDyff11eggCV0BFl&email=saggyb%40example.com&plan=myflix
+      string: description=Sign%20up%20for%20saggy%40example.com&source=tok_16voD1GDaDyff11evd6s5VhE&email=saggy%40example.com&plan=myflix
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -22,7 +22,7 @@ http_interactions:
         Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
         19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
-      - '125'
+      - '123'
   response:
     status:
       code: 200
@@ -31,11 +31,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 18:40:43 GMT
+      - Wed, 14 Oct 2015 12:18:21 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '2384'
+      - '2382'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79rQVZAOhyPyQs
+      - req_7A8U7oKisvs7t0
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,16 +58,16 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "cus_79rQHoXSlZDn63",
+          "id": "cus_7A8UYvPokRMHQJ",
           "object": "customer",
           "account_balance": 0,
-          "created": 1444761642,
+          "created": 1444825100,
           "currency": "usd",
-          "default_source": "card_16vXhVGDaDyff11eBDSkLAyM",
+          "default_source": "card_16voD1GDaDyff11e8Q3ifOBx",
           "delinquent": false,
-          "description": "Sign up for saggyb@example.com",
+          "description": "Sign up for saggy@example.com",
           "discount": null,
-          "email": "saggyb@example.com",
+          "email": "saggy@example.com",
           "livemode": false,
           "metadata": {},
           "shipping": null,
@@ -75,7 +75,7 @@ http_interactions:
             "object": "list",
             "data": [
               {
-                "id": "card_16vXhVGDaDyff11eBDSkLAyM",
+                "id": "card_16voD1GDaDyff11e8Q3ifOBx",
                 "object": "card",
                 "address_city": null,
                 "address_country": null,
@@ -87,7 +87,7 @@ http_interactions:
                 "address_zip_check": null,
                 "brand": "Visa",
                 "country": "US",
-                "customer": "cus_79rQHoXSlZDn63",
+                "customer": "cus_7A8UYvPokRMHQJ",
                 "cvc_check": "pass",
                 "dynamic_last4": null,
                 "exp_month": 12,
@@ -102,20 +102,20 @@ http_interactions:
             ],
             "has_more": false,
             "total_count": 1,
-            "url": "/v1/customers/cus_79rQHoXSlZDn63/sources"
+            "url": "/v1/customers/cus_7A8UYvPokRMHQJ/sources"
           },
           "subscriptions": {
             "object": "list",
             "data": [
               {
-                "id": "sub_79rQs8SN4jSkLN",
+                "id": "sub_7A8UZ5vePrRzA0",
                 "object": "subscription",
                 "application_fee_percent": null,
                 "cancel_at_period_end": false,
                 "canceled_at": null,
-                "current_period_end": 1447440042,
-                "current_period_start": 1444761642,
-                "customer": "cus_79rQHoXSlZDn63",
+                "current_period_end": 1447503500,
+                "current_period_start": 1444825100,
+                "customer": "cus_7A8UYvPokRMHQJ",
                 "discount": null,
                 "ended_at": null,
                 "metadata": {},
@@ -134,7 +134,7 @@ http_interactions:
                   "trial_period_days": null
                 },
                 "quantity": 1,
-                "start": 1444761642,
+                "start": 1444825100,
                 "status": "active",
                 "tax_percent": null,
                 "trial_end": null,
@@ -143,9 +143,9 @@ http_interactions:
             ],
             "has_more": false,
             "total_count": 1,
-            "url": "/v1/customers/cus_79rQHoXSlZDn63/subscriptions"
+            "url": "/v1/customers/cus_7A8UYvPokRMHQJ/subscriptions"
           }
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 18:40:43 GMT
+  recorded_at: Wed, 14 Oct 2015 12:18:22 GMT
 recorded_with: VCR 2.9.3

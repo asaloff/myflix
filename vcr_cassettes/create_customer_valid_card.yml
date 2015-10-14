@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 19:28:06 GMT
+      - Wed, 14 Oct 2015 12:18:42 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79sBDUXae2x1iz
+      - req_7A8UVyNsXGjIRm
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,10 +58,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16vYROGDaDyff11eONV7pmUu",
+          "id": "tok_16voDOGDaDyff11emkfT4xvB",
           "object": "token",
           "card": {
-            "id": "card_16vYROGDaDyff11eV91QGXeR",
+            "id": "card_16voDOGDaDyff11eRcedGZXU",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -85,19 +85,19 @@ http_interactions:
             "tokenization_method": null
           },
           "client_ip": "67.100.26.114",
-          "created": 1444764486,
+          "created": 1444825122,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 19:28:06 GMT
+  recorded_at: Wed, 14 Oct 2015 12:18:42 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: description=Charge%20for%20myflix%40example.com&source=tok_16vYROGDaDyff11eONV7pmUu&email=hilda%40blockkuhic.biz73
+      string: description=Charge%20for%20myflix%40example.com&source=tok_16voDOGDaDyff11emkfT4xvB&email=allie_considine%40mayert.org141
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -114,7 +114,7 @@ http_interactions:
         Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
         19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
-      - '114'
+      - '121'
   response:
     status:
       code: 200
@@ -123,11 +123,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 13 Oct 2015 19:28:06 GMT
+      - Wed, 14 Oct 2015 12:18:43 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1426'
+      - '1433'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_79sBH8p81wrQML
+      - req_7A8UEieJyevOXj
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -150,16 +150,16 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "cus_79sBnsJ1tIbhVS",
+          "id": "cus_7A8UATxWYMLIQF",
           "object": "customer",
           "account_balance": 0,
-          "created": 1444764486,
+          "created": 1444825122,
           "currency": null,
-          "default_source": "card_16vYROGDaDyff11eV91QGXeR",
+          "default_source": "card_16voDOGDaDyff11eRcedGZXU",
           "delinquent": false,
           "description": "Charge for myflix@example.com",
           "discount": null,
-          "email": "hilda@blockkuhic.biz73",
+          "email": "allie_considine@mayert.org141",
           "livemode": false,
           "metadata": {},
           "shipping": null,
@@ -167,7 +167,7 @@ http_interactions:
             "object": "list",
             "data": [
               {
-                "id": "card_16vYROGDaDyff11eV91QGXeR",
+                "id": "card_16voDOGDaDyff11eRcedGZXU",
                 "object": "card",
                 "address_city": null,
                 "address_country": null,
@@ -179,7 +179,7 @@ http_interactions:
                 "address_zip_check": null,
                 "brand": "Visa",
                 "country": "US",
-                "customer": "cus_79sBnsJ1tIbhVS",
+                "customer": "cus_7A8UATxWYMLIQF",
                 "cvc_check": "pass",
                 "dynamic_last4": null,
                 "exp_month": 9,
@@ -194,16 +194,16 @@ http_interactions:
             ],
             "has_more": false,
             "total_count": 1,
-            "url": "/v1/customers/cus_79sBnsJ1tIbhVS/sources"
+            "url": "/v1/customers/cus_7A8UATxWYMLIQF/sources"
           },
           "subscriptions": {
             "object": "list",
             "data": [],
             "has_more": false,
             "total_count": 0,
-            "url": "/v1/customers/cus_79sBnsJ1tIbhVS/subscriptions"
+            "url": "/v1/customers/cus_7A8UATxWYMLIQF/subscriptions"
           }
         }
     http_version: 
-  recorded_at: Tue, 13 Oct 2015 19:28:06 GMT
+  recorded_at: Wed, 14 Oct 2015 12:18:43 GMT
 recorded_with: VCR 2.9.3
