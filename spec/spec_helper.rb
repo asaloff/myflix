@@ -10,9 +10,7 @@ require 'capybara/poltergeist'
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_max_wait_time = 5
-Capybara.app_host = "http://localhost:3000"
-Capybara.server_host = "localhost"
-Capybara.server_port = "3000"
+Capybara.server_port = "52662"
 
 Sidekiq::Testing.inline!
 # Requires supporting ruby files with custom matchers and macros, etc, in
