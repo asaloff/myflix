@@ -19,8 +19,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       X-Stripe-Client-User-Agent:
       - '{"bindings_version":"1.20.1","lang":"ruby","lang_version":"2.1.7 p400 (2015-08-18)","platform":"x86_64-darwin14.0","publisher":"stripe","uname":"Darwin
-        Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
-        19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
+        AaronSaloffsMBP 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep 19 00:26:44 PDT
+        2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
       - '81'
   response:
@@ -31,11 +31,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 14 Oct 2015 13:09:42 GMT
+      - Fri, 16 Oct 2015 00:05:50 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '780'
+      - '782'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_7A9JmUvmq8OunG
+      - req_7Ah7P0dmU8kIa3
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,10 +58,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16vp0kGDaDyff11eXciuSQwg",
+          "id": "tok_16wLjGGDaDyff11epQDjv8KY",
           "object": "token",
           "card": {
-            "id": "card_16vp0jGDaDyff11epzkYVxQC",
+            "id": "card_16wLjGGDaDyff11e5cX6X4uw",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -84,20 +84,20 @@ http_interactions:
             "name": null,
             "tokenization_method": null
           },
-          "client_ip": "67.100.26.114",
-          "created": 1444828182,
+          "client_ip": "107.208.148.179",
+          "created": 1444953950,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Wed, 14 Oct 2015 13:09:42 GMT
+  recorded_at: Fri, 16 Oct 2015 00:05:50 GMT
 - request:
     method: post
-    uri: https://api.stripe.com/v1/charges
+    uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: amount=400&currency=usd&source=tok_16vp0kGDaDyff11eXciuSQwg&description=Charge%20for%20myflix%40example.com
+      string: description=Charge%20for%20myflix%40example.com&source=tok_16wLjGGDaDyff11epQDjv8KY&email=tyreek_bednar%40murphy.org0
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -111,10 +111,10 @@ http_interactions:
       - application/x-www-form-urlencoded
       X-Stripe-Client-User-Agent:
       - '{"bindings_version":"1.20.1","lang":"ruby","lang_version":"2.1.7 p400 (2015-08-18)","platform":"x86_64-darwin14.0","publisher":"stripe","uname":"Darwin
-        Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
-        19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
+        AaronSaloffsMBP 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep 19 00:26:44 PDT
+        2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
-      - '107'
+      - '117'
   response:
     status:
       code: 402
@@ -123,11 +123,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 14 Oct 2015 13:09:42 GMT
+      - Fri, 16 Oct 2015 00:05:51 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '162'
+      - '134'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_7A9JwT3m6BHbpC
+      - req_7Ah7d3woWww9Vg
       Stripe-Version:
       - '2015-09-08'
     body:
@@ -151,10 +151,10 @@ http_interactions:
           "error": {
             "message": "Your card was declined.",
             "type": "card_error",
-            "code": "card_declined",
-            "charge": "ch_16vp0kGDaDyff11eO2U7QL9a"
+            "param": "",
+            "code": "card_declined"
           }
         }
     http_version: 
-  recorded_at: Wed, 14 Oct 2015 13:09:42 GMT
+  recorded_at: Fri, 16 Oct 2015 00:05:51 GMT
 recorded_with: VCR 2.9.3

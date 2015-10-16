@@ -19,8 +19,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       X-Stripe-Client-User-Agent:
       - '{"bindings_version":"1.20.1","lang":"ruby","lang_version":"2.1.7 p400 (2015-08-18)","platform":"x86_64-darwin14.0","publisher":"stripe","uname":"Darwin
-        Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
-        19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
+        AaronSaloffsMBP 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep 19 00:26:44 PDT
+        2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
       - '81'
   response:
@@ -31,11 +31,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 14 Oct 2015 13:09:46 GMT
+      - Fri, 16 Oct 2015 00:05:52 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '780'
+      - '782'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_7A9J2ctn97u8PP
+      - req_7Ah7NmR0mWox0i
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,10 +58,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16vp0oGDaDyff11eJ8bty31C",
+          "id": "tok_16wLjIGDaDyff11efr3nTEZW",
           "object": "token",
           "card": {
-            "id": "card_16vp0oGDaDyff11eqCQyzvgF",
+            "id": "card_16wLjIGDaDyff11eIA11IKaL",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -84,20 +84,20 @@ http_interactions:
             "name": null,
             "tokenization_method": null
           },
-          "client_ip": "67.100.26.114",
-          "created": 1444828186,
+          "client_ip": "107.208.148.179",
+          "created": 1444953952,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Wed, 14 Oct 2015 13:09:46 GMT
+  recorded_at: Fri, 16 Oct 2015 00:05:52 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/customers
     body:
       encoding: US-ASCII
-      string: description=Charge%20for%20myflix%40example.com&source=tok_16vp0oGDaDyff11eJ8bty31C&email=makenzie_williamson%40damore.info2
+      string: description=Charge%20for%20myflix%40example.com&source=tok_16wLjIGDaDyff11efr3nTEZW&email=herman%40kirlin.name1
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -111,10 +111,10 @@ http_interactions:
       - application/x-www-form-urlencoded
       X-Stripe-Client-User-Agent:
       - '{"bindings_version":"1.20.1","lang":"ruby","lang_version":"2.1.7 p400 (2015-08-18)","platform":"x86_64-darwin14.0","publisher":"stripe","uname":"Darwin
-        Aaron-Saloffs-MacBook-Pro.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep
-        19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
+        AaronSaloffsMBP 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep 19 00:26:44 PDT
+        2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64"}'
       Content-Length:
-      - '124'
+      - '111'
   response:
     status:
       code: 402
@@ -123,7 +123,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 14 Oct 2015 13:09:46 GMT
+      - Fri, 16 Oct 2015 00:05:53 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_7A9JeAYZPTDpv2
+      - req_7Ah7Qchh1azR3E
       Stripe-Version:
       - '2015-09-08'
     body:
@@ -156,5 +156,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Wed, 14 Oct 2015 13:09:46 GMT
+  recorded_at: Fri, 16 Oct 2015 00:05:53 GMT
 recorded_with: VCR 2.9.3

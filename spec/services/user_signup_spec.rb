@@ -5,7 +5,7 @@ describe UserSignup do
     after { ActionMailer::Base.deliveries.clear }
 
     context 'with valid personal info and valid card' do
-      let(:customer) { double(:customer, successful?: true) }
+      let(:customer) { double(:customer, successful?: true, customer_token: "12345") }
 
       before do
         user = Fabricate.build(:user, email: 'user@example.com', full_name: 'Sarah Doe')
@@ -16,6 +16,10 @@ describe UserSignup do
 
       it 'saves the user' do
         expect(User.count).to eq(2) # inviter and new user
+      end
+
+      it 'stores the customer token from stripe' do
+        expect(User.last.customer_token).to eq "12345"
       end
 
       context 'email sending' do
@@ -38,7 +42,7 @@ describe UserSignup do
     context "with valid personal info, valid card, and has invitation" do
       let(:sarah) { Fabricate(:user) }
       let(:invitation) { Fabricate(:invitation, inviter: sarah) }
-      let(:customer) { double(:customer, successful?: true) }
+      let(:customer) { double(:customer, successful?: true, customer_token: "12345") }
 
       before do
         allow(StripeWrapper::Customer).to receive(:create).and_return(customer)

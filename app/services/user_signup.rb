@@ -11,6 +11,7 @@ class UserSignup
       new_customer = handle_customer_registration(stripe_token)
 
       if new_customer.successful?
+        @user.customer_token = new_customer.customer_token
         @user.save
         handle_invitation
         send_welcome_email
