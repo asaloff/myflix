@@ -14,6 +14,10 @@ describe QueueItemsController do
     it_behaves_like "require_sign_in" do
       let(:action) { get :index }
     end
+
+    it_behaves_like "require_active" do
+      let(:action) { get :index }
+    end
   end
 
   describe 'POST create' do
@@ -56,6 +60,10 @@ describe QueueItemsController do
     it_behaves_like "require_sign_in" do
       let(:action) { post :create, video_id: 3 }
     end
+
+    it_behaves_like "require_active" do
+      let(:action) { post :create, video_id: 3 }
+    end
   end
 
   describe 'DELETE destroy' do
@@ -87,6 +95,10 @@ describe QueueItemsController do
     end
 
     it_behaves_like "require_sign_in" do
+      let(:action) { delete :destroy, id: queue_item.id }
+    end
+
+    it_behaves_like "require_active" do
       let(:action) { delete :destroy, id: queue_item.id }
     end
   end
@@ -131,6 +143,10 @@ describe QueueItemsController do
       end
 
       it_behaves_like "require_sign_in" do
+        let(:action) { post :update_queue, queue_items: [{id: 1, position: 3}, {id: 2, position: 2}] }
+      end
+      
+      it_behaves_like "require_active" do
         let(:action) { post :update_queue, queue_items: [{id: 1, position: 3}, {id: 2, position: 2}] }
       end
     end

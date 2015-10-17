@@ -18,6 +18,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_active
+    if !current_user.active
+      session[:user_id] = nil
+      flash["danger"] = "Your account was deactivated. Please contact customer service."
+      redirect_to login_path
+    end
+  end
+  
   def logout
     session[:user_id] = nil
   end

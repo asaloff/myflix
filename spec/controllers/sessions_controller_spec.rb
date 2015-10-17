@@ -38,6 +38,19 @@ describe SessionsController do
         expect(flash[:danger]).to be_present
       end
     end
+
+    context 'with inactive user' do
+      let(:bob) { Fabricate(:user, active: false) }
+      before { post :create, email: bob.email, password: bob.password }
+
+      it_behaves_like "require_sign_in" do
+        let(:action) { nil }
+      end
+
+      it 'sets the flash error message' do
+        expect(flash['danger']).to be_present
+      end
+    end
   end
 
   describe 'GET destroy' do

@@ -14,6 +14,14 @@ shared_examples "require_admin" do
   end
 end
 
+shared_examples "require_active" do
+  it 'redirects to the root path' do
+    set_inactive_user
+    action
+    expect(response).to redirect_to login_path
+  end
+end
+
 shared_examples "send_to_my_queue" do
   it "redirects to the my queue page" do
     action
