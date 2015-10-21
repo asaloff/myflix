@@ -85,6 +85,10 @@ RSpec.configure do |config|
   config.color = true
   config.tty = true
   config.formatter = :progress
+
+  config.before(:each, elasticsearch: true) do
+    Video.__elasticsearch__.create_index! force: true
+  end
 end
 
 # Turn off warning for sidekiq not processing jobs during tests
