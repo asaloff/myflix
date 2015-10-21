@@ -10,4 +10,8 @@ module ApplicationHelper
   def current_user_can_follow?(user)
     true unless current_user.followings.include?(user) || user == current_user
   end
+
+  def options_for_search_rating(params)
+    options_for_select((10..50).map { |num| num / 10.0 }, params)
+  end
 end

@@ -19,10 +19,10 @@
       .row.average_rating_label Average Rating
       = label_tag :rating_from, "From:", class: "col-sm-1 control-label"
       .col-sm-2
-        = select_tag :rating_from, options_for_select((10..50).map { |num| num / 10.0 }, params[:rating_from]), prompt: '-', class: "form-control"
+        = select_tag :rating_from, options_for_search_rating(params[:rating_from]), prompt: '-', class: "form-control"
       = label_tag :rating_to, "To:", class: "col-sm-1 control-label"
       .col-sm-2
-        = select_tag(:rating_to, options_for_select((10..50).map { |num| num / 10.0 }, params[:rating_to]), prompt: '-', class: "form-control")
+        = select_tag(:rating_to, options_for_search_rating(params[:rating_to]), prompt: '-', class: "form-control")
   %hr
   %h2.results_count Results: #{@videos.count} videos found
   - @videos.each do |video|
