@@ -44,4 +44,12 @@ describe User do
       expect(sarah.already_queued?(video)).to be false
     end
   end
+
+  describe 'deactivate!' do
+    it "deactivates the user" do
+      bob = Fabricate(:user, active: true)
+      bob.deactivate!
+      expect(bob.reload).not_to be_active
+    end
+  end
 end

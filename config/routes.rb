@@ -20,6 +20,7 @@ Myflix::Application.routes.draw do
 
   namespace :admin do
     resources :videos, only: [:new, :create]
+    resources :payments, only: [:index]
   end
 
   get '/expired_link', to: 'pages#invalid_token'
@@ -34,6 +35,7 @@ Myflix::Application.routes.draw do
   resources :videos, only: [:index, :show] do
     collection do
       get 'search', to: "videos#search"
+      get 'advanced_search', to: "videos#advanced_search"
     end
     resources :reviews, only: [:create]
   end
@@ -41,4 +43,6 @@ Myflix::Application.routes.draw do
   resources :categories, only: [:show]
 
   resources :invitations, only: [:new, :create]
+
+  mount StripeEvent::Engine, at: '/stripe_events'
 end

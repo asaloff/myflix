@@ -9,6 +9,10 @@ describe UsersController do
       let(:action) { get :show, id: sarah }
     end
 
+    it_behaves_like "require_active" do
+      let(:action) { get :show, id: sarah }
+    end
+
     it 'sets @user' do
       get :show, id: sarah
       expect(assigns(:user)).to eq sarah

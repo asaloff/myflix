@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/tokens
     body:
       encoding: US-ASCII
-      string: card[number]=4000000000000002&card[exp_month]=9&card[exp_year]=2019&card[cvc]=314
+      string: card[number]=4242424242424242&card[exp_month]=9&card[exp_year]=2019&card[cvc]=314
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 06 Oct 2015 16:20:48 GMT
+      - Fri, 16 Oct 2015 00:05:48 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_77CaFIIarli8HI
+      - req_7Ah75xGHOFhrQH
       Stripe-Version:
       - '2015-09-08'
       Strict-Transport-Security:
@@ -58,46 +58,46 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_16syBIGDaDyff11eiCXIjhxW",
-          "livemode": false,
-          "created": 1444148448,
-          "used": false,
+          "id": "tok_16wLjEGDaDyff11eXl15t4o4",
           "object": "token",
-          "type": "card",
           "card": {
-            "id": "card_16syBIGDaDyff11errR6OY1x",
+            "id": "card_16wLjEGDaDyff11ewtLWFPea",
             "object": "card",
-            "last4": "0002",
-            "brand": "Visa",
-            "funding": "credit",
-            "exp_month": 9,
-            "exp_year": 2019,
-            "fingerprint": "Dby70sB1S2Hj6v5y",
-            "country": "US",
-            "name": null,
-            "address_line1": null,
-            "address_line2": null,
             "address_city": null,
+            "address_country": null,
+            "address_line1": null,
+            "address_line1_check": null,
+            "address_line2": null,
             "address_state": null,
             "address_zip": null,
-            "address_country": null,
-            "cvc_check": "unchecked",
-            "address_line1_check": null,
             "address_zip_check": null,
-            "tokenization_method": null,
+            "brand": "Visa",
+            "country": "US",
+            "cvc_check": "unchecked",
             "dynamic_last4": null,
-            "metadata": {}
+            "exp_month": 9,
+            "exp_year": 2019,
+            "fingerprint": "7CzkmxOcRfxLYEh4",
+            "funding": "credit",
+            "last4": "4242",
+            "metadata": {},
+            "name": null,
+            "tokenization_method": null
           },
-          "client_ip": "107.208.148.179"
+          "client_ip": "107.208.148.179",
+          "created": 1444953948,
+          "livemode": false,
+          "type": "card",
+          "used": false
         }
     http_version: 
-  recorded_at: Tue, 06 Oct 2015 16:20:55 GMT
+  recorded_at: Fri, 16 Oct 2015 00:05:48 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=400&currency=usd&source=tok_16syBIGDaDyff11eiCXIjhxW&description=Charge%20for%20test%40example.com
+      string: amount=400&currency=usd&source=tok_16wLjEGDaDyff11eXl15t4o4&description=Charge%20for%20test%40example.com
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -117,17 +117,17 @@ http_interactions:
       - '105'
   response:
     status:
-      code: 402
-      message: Payment Required
+      code: 200
+      message: OK
     headers:
       Server:
       - nginx
       Date:
-      - Tue, 06 Oct 2015 16:20:49 GMT
+      - Fri, 16 Oct 2015 00:05:49 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '162'
+      - '1448'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -141,20 +141,74 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_77CaqFMjtvqvBT
+      - req_7Ah7gFR08ysgrY
       Stripe-Version:
       - '2015-09-08'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
     body:
       encoding: UTF-8
       string: |
         {
-          "error": {
-            "message": "Your card was declined.",
-            "type": "card_error",
-            "code": "card_declined",
-            "charge": "ch_16syBJGDaDyff11eppBLWvPH"
-          }
+          "id": "ch_16wLjFGDaDyff11ecCn4l5zI",
+          "object": "charge",
+          "amount": 400,
+          "amount_refunded": 0,
+          "application_fee": null,
+          "balance_transaction": "txn_16wLjFGDaDyff11eHxSflPhG",
+          "captured": true,
+          "created": 1444953949,
+          "currency": "usd",
+          "customer": null,
+          "description": "Charge for test@example.com",
+          "destination": null,
+          "dispute": null,
+          "failure_code": null,
+          "failure_message": null,
+          "fraud_details": {},
+          "invoice": null,
+          "livemode": false,
+          "metadata": {},
+          "paid": true,
+          "receipt_email": null,
+          "receipt_number": null,
+          "refunded": false,
+          "refunds": {
+            "object": "list",
+            "data": [],
+            "has_more": false,
+            "total_count": 0,
+            "url": "/v1/charges/ch_16wLjFGDaDyff11ecCn4l5zI/refunds"
+          },
+          "shipping": null,
+          "source": {
+            "id": "card_16wLjEGDaDyff11ewtLWFPea",
+            "object": "card",
+            "address_city": null,
+            "address_country": null,
+            "address_line1": null,
+            "address_line1_check": null,
+            "address_line2": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_zip_check": null,
+            "brand": "Visa",
+            "country": "US",
+            "customer": null,
+            "cvc_check": "pass",
+            "dynamic_last4": null,
+            "exp_month": 9,
+            "exp_year": 2019,
+            "fingerprint": "7CzkmxOcRfxLYEh4",
+            "funding": "credit",
+            "last4": "4242",
+            "metadata": {},
+            "name": null,
+            "tokenization_method": null
+          },
+          "statement_descriptor": null,
+          "status": "succeeded"
         }
     http_version: 
-  recorded_at: Tue, 06 Oct 2015 16:20:55 GMT
+  recorded_at: Fri, 16 Oct 2015 00:05:49 GMT
 recorded_with: VCR 2.9.3

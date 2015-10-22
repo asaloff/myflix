@@ -9,8 +9,13 @@ class SessionsController < ApplicationController
     user = User.find_by email: params[:email]
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to home_path
+      if user.active?
+        session[:user_id] = user.id
+        redirect_to home_path
+      else
+        flash["danger"] = "Your account was deactivated. Please contact customer service."
+        redirect_to login_path
+      end
     else
       flash["danger"] = "There was something wrong with your email address or password"
       redirect_to login_path

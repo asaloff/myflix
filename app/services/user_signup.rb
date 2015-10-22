@@ -8,16 +8,17 @@ class UserSignup
 
   def sign_up(stripe_token)
     if @user.valid?
-      charge = handle_registration_charge(stripe_token)
+      new_customer = handle_customer_registration(stripe_token)
 
-      if charge.successful?
+      if new_customer.successful?
+        @user.customer_token = new_customer.customer_token
         @user.save
         handle_invitation
         send_welcome_email
         @status = :success
       else
         @status = :failed
-        @error_message = charge.error_message
+        @error_message = new_customer.error_message
       end
     else
       @status = :failed
@@ -46,6 +47,15 @@ class UserSignup
       :amount => 999,
       :source => stripe_token,
       :description => "Sign up charge for #{@user.email}"
+    )
+  end
+
+  def handle_customer_registration(stripe_token)
+    StripeWrapper::Customer.create(
+      :description => "Sign up for #{@user.email}",
+      :source => stripe_token,
+      :user => @user,
+      :plan => "myflix"
     )
   end
 

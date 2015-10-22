@@ -28,6 +28,10 @@ describe VideosController do
     it_behaves_like "require_sign_in" do
       let(:action) { get :show, id: video.id }
     end
+
+    it_behaves_like "require_active" do
+      let(:action) { get :show, id: video.id }
+    end
   end
 
   describe 'GET search' do
@@ -39,6 +43,10 @@ describe VideosController do
     end
 
     it_behaves_like "require_sign_in" do
+      let(:action) { get :search, search: 'rama' }
+    end
+
+    it_behaves_like "require_active" do
       let(:action) { get :search, search: 'rama' }
     end
   end

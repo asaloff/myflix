@@ -10,6 +10,10 @@ describe Admin::VideosController do
       let(:action) { get :new }
     end
 
+    it_behaves_like "require_active" do
+      let(:action) { get :new }
+    end
+
     it 'sets @video to a new video' do
       set_current_admin_user
       get :new
@@ -25,6 +29,10 @@ describe Admin::VideosController do
     end
 
     it_behaves_like 'require_admin' do
+      let(:action) { post :create }
+    end
+
+    it_behaves_like "require_active" do
       let(:action) { post :create }
     end
 

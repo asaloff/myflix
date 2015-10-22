@@ -7,6 +7,10 @@ describe ReviewsController do
     context "with authenticated user" do
       before { set_current_user }
 
+      it_behaves_like "require_active" do
+        let(:action) { post :create, review: Fabricate.attributes_for(:review), video_id: video.id }
+      end
+
       context "with valid inputs" do
         before do
           post :create, review: Fabricate.attributes_for(:review), video_id: video.id

@@ -22,7 +22,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-aws'
 gem 'stripe'
+gem 'stripe_event'
 gem 'draper', '~> 1.3'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development do
   gem 'thin'
@@ -46,7 +49,6 @@ group :test do
   gem 'rspec-sidekiq'
   gem 'vcr'
   gem 'webmock'
-  gem 'stripe-ruby-mock', '~> 2.1.1', :require => 'stripe_mock'
   gem 'poltergeist'
   gem 'selenium-webdriver'
 end

@@ -8,6 +8,10 @@ describe InvitationsController  do
       let(:action) { get :new }
     end
 
+    it_behaves_like "require_active" do
+      let(:action) { get :new }
+    end
+
     it 'sets @invitation to a new invitation' do
       get :new
       expect(assigns(:invitation)).to be_a_new Invitation

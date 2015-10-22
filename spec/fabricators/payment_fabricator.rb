@@ -1,0 +1,2 @@
+Fabricator(:payment) do
+end

@@ -8,6 +8,10 @@ describe RelationshipsController do
       let(:action) { get :index }
     end
 
+    it_behaves_like "require_active" do
+      let(:action) { get :index }
+    end
+
     it 'sets @relationships to the users the current user is following' do
       sarah = current_user
       bob = Fabricate(:user)
@@ -32,6 +36,10 @@ describe RelationshipsController do
       let(:sarah) { current_user }
       let(:bob) { Fabricate(:user) }
       let(:frank) { Fabricate(:user) }
+
+      it_behaves_like "require_active" do
+        let(:action) { delete :destroy, id: 1 }
+      end
 
       it 'should redirect to the people page' do
         relationship1 = Fabricate(:relationship, user: sarah, following: bob)
@@ -58,6 +66,10 @@ describe RelationshipsController do
     before { set_current_user }
 
     it_behaves_like "require_sign_in" do
+      let(:action) { post :create }
+    end
+
+    it_behaves_like "require_active" do
       let(:action) { post :create }
     end
 
